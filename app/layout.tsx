@@ -84,9 +84,9 @@ export const metadata: Metadata = {
     ],
     shortcut: "/kalender-logo.png",
   },
-  verification: {
-    google: "seu-codigo-google-search-console",
-  },
+  // verification: {
+  //   google: "GOOGLE_SEARCH_CONSOLE_ID",
+  // },
 }
 
 interface RootLayoutProps {
@@ -106,11 +106,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
       priceCurrency: "BRL",
       priceValidUntil: "2026-12-31",
       description: "Teste grátis por 14 dias"
-    },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.8",
-      ratingCount: "150"
     },
     description: "Plataforma completa para negócios de serviços. Agendamento, financeiro, CRM, comissões, fidelização e atendimento por IA no WhatsApp.",
     featureList: [

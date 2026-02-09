@@ -9,22 +9,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: "https://kalender.com.br/platform",
+      url: "https://kalender.com.br/contact",
       lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
+      changeFrequency: "monthly",
+      priority: 0.6,
     },
     {
-      url: "https://kalender.com.br/features",
+      url: "https://kalender.com.br/legal",
       lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: "https://kalender.com.br/segments",
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
+      changeFrequency: "monthly",
+      priority: 0.3,
     },
   ]
 }

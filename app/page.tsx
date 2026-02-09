@@ -165,15 +165,27 @@ export default function LandingPage() {
     return () => window.removeEventListener("scroll", close)
   }, [mobileMenuOpen])
 
-  // Fetch plans from API
+  // Fetch plans from API with fallback
   useEffect(() => {
     fetch(API_PLANS_URL)
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) throw new Error("API error")
+        return res.json()
+      })
       .then((data: PlanDetails[]) => {
-        setPlans(data.filter((p) => p.isActive))
+        const active = data.filter((p) => p.isActive)
+        if (active.length > 0) setPlans(active)
         setPlansLoading(false)
       })
-      .catch(() => setPlansLoading(false))
+      .catch(() => {
+        setPlans([
+          { id: 1, name: "Starter", description: "Para quem está começando", price: 99.90, annualPrice: 959, isActive: true, isRecommended: false, quotas: {}, features: {}, featureDescriptions: ["1 profissional", "Agendamento online", "CRM básico", "Notificações por email"] },
+          { id: 2, name: "Essencial", description: "Para negócios em crescimento", price: 299.90, annualPrice: 2879, isActive: true, isRecommended: true, quotas: {}, features: {}, featureDescriptions: ["Até 5 profissionais", "Tudo do Starter", "Comissões", "Fidelização", "WhatsApp", "Relatórios"] },
+          { id: 3, name: "Pro", description: "Para operações avançadas", price: 599.90, annualPrice: 5759, isActive: true, isRecommended: false, quotas: {}, features: {}, featureDescriptions: ["Até 15 profissionais", "Tudo do Essencial", "Studio IA", "Multi-unidades", "Suporte prioritário"] },
+          { id: 4, name: "Enterprise", description: "Para grandes operações", price: 1299.90, annualPrice: 12479, isActive: true, isRecommended: false, quotas: {}, features: {}, featureDescriptions: ["Profissionais ilimitados", "Tudo do Pro", "Gerente dedicado", "SLA garantido", "API personalizada"] },
+        ])
+        setPlansLoading(false)
+      })
   }, [])
 
   const scrollTo = (id: string) => {
@@ -1042,7 +1054,7 @@ export default function LandingPage() {
                 {[
                   { label: "Funcionalidades", action: () => scrollTo("features") },
                   { label: "Preços", action: () => scrollTo("pricing") },
-                  { label: "Integrações", action: () => scrollTo("features") },
+                  { label: "FAQ", action: () => scrollTo("faq") },
                 ].map((item, i) => (
                   <li key={i}>
                     <button onClick={item.action} className="text-sm hover:text-white transition-colors">
