@@ -254,11 +254,11 @@ export default function LandingPage() {
   const faqs = [
     {
       q: "Como funciona o teste grátis?",
-      a: "Você tem 14 dias para testar todas as funcionalidades gratuitamente. Não pedimos cartão de crédito para começar. Ao final do período, você escolhe o plano ideal para seu negócio.",
+      a: "Você tem 14 dias para testar todas as funcionalidades gratuitamente. Basta informar um cartão de crédito no cadastro — você só será cobrado após o período de teste. Cancele a qualquer momento antes e não pague nada.",
     },
     {
-      q: "Preciso de cartão de crédito para testar?",
-      a: "Não. O cadastro é 100% gratuito e sem compromisso. Você só adiciona um método de pagamento quando decidir assinar um plano.",
+      q: "Vou ser cobrado durante o teste?",
+      a: "Não. O cartão é cadastrado apenas para garantir a continuidade do serviço após os 14 dias. Se cancelar antes do fim do teste, nenhuma cobrança será realizada.",
     },
     {
       q: "Posso cancelar a qualquer momento?",
@@ -446,7 +446,7 @@ export default function LandingPage() {
                 </Button>
               </div>
 
-              <p className="text-sm text-gray-500">Sem cartão de crédito. Configuração em 5 minutos.</p>
+              <p className="text-sm text-gray-500">Teste grátis por 14 dias. Configuração em 5 minutos.</p>
             </div>
 
             {/* Hero Visual - Calendar Mockup */}
@@ -822,7 +822,7 @@ export default function LandingPage() {
               Escolha o plano ideal para seu negócio
             </h2>
             <p className="text-gray-500 text-lg max-w-2xl mx-auto mb-8">
-              Todos os planos incluem teste grátis de 14 dias. Sem cartão de crédito.
+              Todos os planos incluem teste grátis de 14 dias. Só cobra após o período de teste.
             </p>
 
             {/* Annual Toggle */}
@@ -1016,7 +1016,7 @@ export default function LandingPage() {
               Já tem conta? Entrar
             </Button>
           </div>
-          <p className="text-sm text-gray-500">Sem cartão de crédito. Configuração em 5 minutos.</p>
+          <p className="text-sm text-gray-500">Teste grátis por 14 dias. Configuração em 5 minutos.</p>
         </div>
       </section>
 
