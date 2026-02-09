@@ -9,9 +9,9 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Kalender - Agendamento Inteligente com IA | Automação para Salões, Clínicas e Consultórios",
-  description: "Plataforma completa de agendamentos com IA que atende via WhatsApp. Reduza faltas, aumente conversão e automatize sua agenda. Ideal para salões de beleza, clínicas, consultórios, academias e prestadores de serviços. Teste grátis 15 dias.",
-  keywords: "agendamento online, sistema de agendamento, agenda inteligente, agendamento whatsapp, IA agendamento, bot whatsapp, automação agendamento, sistema para salão, sistema para clínica, sistema para consultório, qualificação de leads, funil de vendas, CRM agendamento",
+  title: "Kalender - Plataforma Completa de Gestão e Agendamento Inteligente",
+  description: "Plataforma completa para negócios de serviços. Agendamento online, financeiro, CRM, comissões, fidelização, estoque e atendimento por IA no WhatsApp. Ideal para salões, clínicas, barbearias, consultórios, academias e prestadores de serviços. Teste grátis 14 dias.",
+  keywords: "sistema agendamento online, gestão negócio serviços, plataforma agendamento inteligente, agenda online profissional, CRM serviços, comissões profissionais, fidelização clientes, WhatsApp agendamento, IA atendimento, sistema salão, sistema clínica, sistema barbearia, sistema consultório",
   authors: [{ name: "Kalender" }],
   creator: "Kalender",
   publisher: "Kalender",
@@ -33,8 +33,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "pt_BR",
     url: "https://kalender.com.br",
-    title: "Kalender - Agendamento Inteligente com IA",
-    description: "Automatize agendamentos com IA no WhatsApp. Reduza faltas, qualifique leads e aumente conversão. Ideal para salões, clínicas e consultórios.",
+    title: "Kalender - Plataforma Completa de Gestão e Agendamento Inteligente",
+    description: "Plataforma completa para negócios de serviços. Agendamento, financeiro, CRM, comissões, fidelização e IA no WhatsApp. Teste grátis 14 dias.",
     siteName: "Kalender",
     images: [
       {
@@ -47,8 +47,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kalender - Agendamento Inteligente com IA",
-    description: "Automatize agendamentos com IA no WhatsApp. Reduza faltas e aumente conversão.",
+    title: "Kalender - Plataforma Completa de Gestão e Agendamento Inteligente",
+    description: "Plataforma completa para negócios de serviços. Agendamento, financeiro, CRM, comissões, fidelização e IA no WhatsApp.",
     images: ["/og-image.png"],
   },
   robots: {
@@ -104,15 +104,15 @@ export default function RootLayout({ children }: RootLayoutProps) {
       "@type": "Offer",
       price: "0",
       priceCurrency: "BRL",
-      priceValidUntil: "2025-12-31",
-      description: "Teste grátis por 15 dias"
+      priceValidUntil: "2026-12-31",
+      description: "Teste grátis por 14 dias"
     },
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4.8",
       ratingCount: "150"
     },
-    description: "Plataforma completa de agendamentos com IA que atende via WhatsApp. Reduza faltas, aumente conversão e automatize sua agenda.",
+    description: "Plataforma completa para negócios de serviços. Agendamento, financeiro, CRM, comissões, fidelização e atendimento por IA no WhatsApp.",
     featureList: [
       "Agendamento com IA via WhatsApp",
       "Qualificação de leads",

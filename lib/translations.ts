@@ -1016,5 +1016,6 @@ export type Locale = keyof typeof translations
 export type TranslationKey = keyof typeof translations.pt
 
 export function getTranslation(locale: Locale, key: TranslationKey): string {
-  return translations[locale]?.[key] || translations.pt[key] || key
+  const value = translations[locale]?.[key] || translations.pt[key] || key
+  return typeof value === 'string' ? value : String(key)
 }
