@@ -234,14 +234,9 @@ export default function LandingPage() {
 function LandingPageContent() {
   const { t, language, setLanguage } = useTranslation()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const fallbackPlans: PlanDetails[] = [
-    { id: 1, name: "Starter", description: "Para quem está começando", price: 99.90, annualPrice: 959, isActive: true, isRecommended: false, quotas: {}, features: {}, featureDescriptions: ["Até 3 profissionais", "Agendamento online", "Gestão de clientes"] },
-    { id: 2, name: "Essencial", description: "Para negócios em crescimento", price: 299.90, annualPrice: 2879, isActive: true, isRecommended: true, quotas: {}, features: {}, featureDescriptions: ["Até 10 profissionais", "Até 3 unidades", "Integração WhatsApp", "Agendamento online", "Gestão de clientes"] },
-    { id: 3, name: "Pro", description: "Para operações avançadas", price: 599.90, annualPrice: 5759, isActive: true, isRecommended: false, quotas: {}, features: {}, featureDescriptions: ["Até 50 profissionais", "Até 10 unidades", "Integração WhatsApp", "Analytics avançado", "API completa"] },
-    { id: 4, name: "Enterprise", description: "Para grandes operações", price: 1299.90, annualPrice: 12479, isActive: true, isRecommended: false, quotas: {}, features: {}, featureDescriptions: ["Até 200 profissionais", "Até 50 unidades", "Integração WhatsApp", "Analytics avançado", "Branding personalizado"] },
-  ]
-  const [plans, setPlans] = useState<PlanDetails[]>(fallbackPlans)
-  const [plansLoading, setPlansLoading] = useState(false)
+  const [plans, setPlans] = useState<PlanDetails[]>([])
+  const [plansLoading, setPlansLoading] = useState(true)
+  const [plansError, setPlansError] = useState(false)
   const [isAnnual, setIsAnnual] = useState(true)
   const [openFaq, setOpenFaq] = useState<number | null>(null)
   const faqRefs = useRef<(HTMLDivElement | null)[]>([])
@@ -262,8 +257,10 @@ function LandingPageContent() {
     return () => window.removeEventListener("scroll", close)
   }, [mobileMenuOpen])
 
-  // Try to fetch fresh plans from API (fallback already loaded as initial state)
+  // Fetch plans from API
   useEffect(() => {
+    setPlansLoading(true)
+    setPlansError(false)
     fetch(API_PLANS_URL)
       .then((res) => {
         if (!res.ok) throw new Error("API error")
@@ -271,10 +268,12 @@ function LandingPageContent() {
       })
       .then((data: PlanDetails[]) => {
         const active = Array.isArray(data) ? data.filter((p) => p.isActive) : []
-        if (active.length > 0) setPlans(active)
+        setPlans(active)
+        setPlansLoading(false)
       })
       .catch(() => {
-        // Fallback already set as initial state, nothing to do
+        setPlansError(true)
+        setPlansLoading(false)
       })
   }, [])
 
@@ -889,6 +888,13 @@ function LandingPageContent() {
                   </CardContent>
                 </Card>
               ))}
+            </div>
+          ) : plansError ? (
+            <div className="text-center py-12">
+              <p className="text-gray-500 mb-4">{language === "en" ? "Could not load plans. Please try again." : language === "es" ? "No se pudieron cargar los planes. Intenta de nuevo." : "Não foi possível carregar os planos. Tente novamente."}</p>
+              <Button variant="outline" onClick={() => window.location.reload()}>
+                {language === "en" ? "Reload" : language === "es" ? "Recargar" : "Recarregar"}
+              </Button>
             </div>
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto stagger-children">
