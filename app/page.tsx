@@ -268,10 +268,12 @@ function LandingPageContent() {
       })
       .then((data: PlanDetails[]) => {
         const active = Array.isArray(data) ? data.filter((p) => p.isActive) : []
+        console.log("[Kalender] Plans loaded:", active.length, active.map((p) => p.name))
         setPlans(active)
         setPlansLoading(false)
       })
-      .catch(() => {
+      .catch((err) => {
+        console.error("[Kalender] Failed to fetch plans:", err)
         setPlansError(true)
         setPlansLoading(false)
       })
@@ -897,7 +899,11 @@ function LandingPageContent() {
               </Button>
             </div>
           ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto stagger-children">
+            <div className={`grid gap-6 max-w-6xl mx-auto stagger-children ${
+              plans.length <= 2 ? "md:grid-cols-2 max-w-3xl" :
+              plans.length === 3 ? "md:grid-cols-3 max-w-5xl" :
+              "md:grid-cols-2 lg:grid-cols-4"
+            }`}>
               {plans.map((plan) => {
                 const monthlyPrice = isAnnual ? plan.annualPrice / 12 : plan.price
                 const isEnterprise = plan.name.toLowerCase() === "enterprise"
