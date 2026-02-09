@@ -29,11 +29,13 @@ import {
   Boxes,
   ClipboardList,
   Send,
+  Globe,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Switch } from "@/components/ui/switch"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { TranslationProvider, useTranslation } from "@/contexts/translation-context"
 import type { Locale } from "@/lib/translations"
 
@@ -143,10 +145,10 @@ function formatPrice(price: number) {
 
 // ─── Language Labels ─────────────────────────────────────────────────────────
 
-const LANGUAGES: { code: Locale; label: string }[] = [
-  { code: "pt", label: "PT" },
-  { code: "en", label: "EN" },
-  { code: "es", label: "ES" },
+const LANGUAGES: { code: Locale; label: string; flag: string }[] = [
+  { code: "pt", label: "Português", flag: "🇧🇷" },
+  { code: "en", label: "English", flag: "🇺🇸" },
+  { code: "es", label: "Español", flag: "🇪🇸" },
 ]
 
 // ─── Module Category Structure ───────────────────────────────────────────────
@@ -232,8 +234,14 @@ export default function LandingPage() {
 function LandingPageContent() {
   const { t, language, setLanguage } = useTranslation()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [plans, setPlans] = useState<PlanDetails[]>([])
-  const [plansLoading, setPlansLoading] = useState(true)
+  const fallbackPlans: PlanDetails[] = [
+    { id: 1, name: "Starter", description: "Para quem está começando", price: 99.90, annualPrice: 959, isActive: true, isRecommended: false, quotas: {}, features: {}, featureDescriptions: ["Até 3 profissionais", "Agendamento online", "Gestão de clientes"] },
+    { id: 2, name: "Essencial", description: "Para negócios em crescimento", price: 299.90, annualPrice: 2879, isActive: true, isRecommended: true, quotas: {}, features: {}, featureDescriptions: ["Até 10 profissionais", "Até 3 unidades", "Integração WhatsApp", "Agendamento online", "Gestão de clientes"] },
+    { id: 3, name: "Pro", description: "Para operações avançadas", price: 599.90, annualPrice: 5759, isActive: true, isRecommended: false, quotas: {}, features: {}, featureDescriptions: ["Até 50 profissionais", "Até 10 unidades", "Integração WhatsApp", "Analytics avançado", "API completa"] },
+    { id: 4, name: "Enterprise", description: "Para grandes operações", price: 1299.90, annualPrice: 12479, isActive: true, isRecommended: false, quotas: {}, features: {}, featureDescriptions: ["Até 200 profissionais", "Até 50 unidades", "Integração WhatsApp", "Analytics avançado", "Branding personalizado"] },
+  ]
+  const [plans, setPlans] = useState<PlanDetails[]>(fallbackPlans)
+  const [plansLoading, setPlansLoading] = useState(false)
   const [isAnnual, setIsAnnual] = useState(true)
   const [openFaq, setOpenFaq] = useState<number | null>(null)
   const faqRefs = useRef<(HTMLDivElement | null)[]>([])
@@ -254,7 +262,7 @@ function LandingPageContent() {
     return () => window.removeEventListener("scroll", close)
   }, [mobileMenuOpen])
 
-  // Fetch plans from API with fallback
+  // Try to fetch fresh plans from API (fallback already loaded as initial state)
   useEffect(() => {
     fetch(API_PLANS_URL)
       .then((res) => {
@@ -262,18 +270,11 @@ function LandingPageContent() {
         return res.json()
       })
       .then((data: PlanDetails[]) => {
-        const active = data.filter((p) => p.isActive)
+        const active = Array.isArray(data) ? data.filter((p) => p.isActive) : []
         if (active.length > 0) setPlans(active)
-        setPlansLoading(false)
       })
       .catch(() => {
-        setPlans([
-          { id: 1, name: "Starter", description: "Para quem está começando", price: 99.90, annualPrice: 959, isActive: true, isRecommended: false, quotas: {}, features: {}, featureDescriptions: ["1 profissional", "Agendamento online", "CRM básico", "Notificações por email"] },
-          { id: 2, name: "Essencial", description: "Para negócios em crescimento", price: 299.90, annualPrice: 2879, isActive: true, isRecommended: true, quotas: {}, features: {}, featureDescriptions: ["Até 5 profissionais", "Tudo do Starter", "Comissões", "Fidelização", "WhatsApp", "Relatórios"] },
-          { id: 3, name: "Pro", description: "Para operações avançadas", price: 599.90, annualPrice: 5759, isActive: true, isRecommended: false, quotas: {}, features: {}, featureDescriptions: ["Até 15 profissionais", "Tudo do Essencial", "Studio IA", "Multi-unidades", "Suporte prioritário"] },
-          { id: 4, name: "Enterprise", description: "Para grandes operações", price: 1299.90, annualPrice: 12479, isActive: true, isRecommended: false, quotas: {}, features: {}, featureDescriptions: ["Profissionais ilimitados", "Tudo do Pro", "Gerente dedicado", "SLA garantido", "API personalizada"] },
-        ])
-        setPlansLoading(false)
+        // Fallback already set as initial state, nothing to do
       })
   }, [])
 
@@ -353,26 +354,41 @@ function LandingPageContent() {
     a: t(`landing.faq_a${i + 1}`),
   }))
 
-  // ─── Language Switcher Inline Component ─────────────────────────────────
+  // ─── Language Switcher Dropdown Component ────────────────────────────────
+
+  const currentLang = LANGUAGES.find((l) => l.code === language) || LANGUAGES[0]
 
   const LanguageSelector = ({ dark }: { dark?: boolean }) => (
-    <div className="flex items-center gap-0.5 rounded-lg border border-gray-200/20 p-0.5">
-      {LANGUAGES.map((lang) => (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
         <button
-          key={lang.code}
-          onClick={() => setLanguage(lang.code)}
-          className={`text-xs px-2 py-1 rounded-md transition-colors font-medium ${
-            language === lang.code
-              ? "bg-primary/20 text-primary"
-              : dark
-              ? "text-gray-400 hover:text-white"
-              : "text-gray-500 hover:text-gray-700"
+          className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-sm font-medium transition-colors border ${
+            dark
+              ? "border-white/15 text-gray-300 hover:text-white hover:bg-white/10"
+              : "border-gray-200 text-gray-700 hover:bg-gray-50"
           }`}
         >
-          {lang.label}
+          <Globe className="h-3.5 w-3.5" />
+          <span>{currentLang.flag}</span>
+          <span className="hidden sm:inline text-xs">{currentLang.code.toUpperCase()}</span>
+          <ChevronDown className="h-3 w-3 opacity-60" />
         </button>
-      ))}
-    </div>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end" className="w-44">
+        {LANGUAGES.map((lang) => (
+          <DropdownMenuItem
+            key={lang.code}
+            onClick={() => setLanguage(lang.code)}
+            className={`flex items-center gap-2.5 cursor-pointer ${
+              language === lang.code ? "bg-primary/10 text-primary font-medium" : ""
+            }`}
+          >
+            <span className="text-base">{lang.flag}</span>
+            <span>{lang.label}</span>
+          </DropdownMenuItem>
+        ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
   )
 
   return (
