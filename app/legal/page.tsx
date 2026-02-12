@@ -78,7 +78,7 @@ export default function LegalPage() {
 
             <h2>4. Planos e Pagamento</h2>
             <ul>
-              <li><strong>Teste grátis:</strong> Oferecemos um período de teste gratuito de 14 dias. Um cartão de crédito é solicitado no cadastro, mas a cobrança só ocorre após o término do período de teste.</li>
+              <li><strong>Teste grátis:</strong> Oferecemos um período de teste gratuito de 7 dias. Um cartão de crédito é solicitado no cadastro, mas a cobrança só ocorre após o término do período de teste.</li>
               <li><strong>Assinatura:</strong> Após o período de teste, o acesso requer assinatura de um plano pago. Os preços estão disponíveis na página de preços e podem ser alterados com aviso prévio de 30 dias.</li>
               <li><strong>Cobrança:</strong> As cobranças são recorrentes (mensal ou anual, conforme o plano escolhido) e processadas automaticamente.</li>
               <li><strong>Cancelamento:</strong> Você pode cancelar sua assinatura a qualquer momento. O acesso permanece ativo até o fim do período já pago. Não há multa por cancelamento.</li>

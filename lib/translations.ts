@@ -21,7 +21,7 @@ export const translations = {
     hero_uptime_description: "Uptime garantido",
     hero_start_free_trial: "Começar Teste Grátis",
     hero_view_pricing: "Ver Preços",
-    hero_free_trial_note: "✨ 15 dias grátis • Sem cartão de crédito",
+    hero_free_trial_note: "✨ 7 dias grátis • Sem cartão de crédito",
 
     // Features
     features_title: "Recursos Poderosos",
@@ -56,7 +56,7 @@ export const translations = {
     // Pricing
     pricing_title: "Preços Transparentes",
     pricing_title_highlight: "Sem Surpresas",
-    pricing_subtitle: "Escolha o plano ideal para o seu negócio. Todos incluem teste grátis de 15 dias.",
+    pricing_subtitle: "Escolha o plano ideal para o seu negócio. Todos incluem teste grátis de 7 dias.",
     pricing_annual_savings: "💰 Economia Anual Garantida",
     pricing_annual_description:
       "Pague anualmente e economize 30% em todos os planos. Mais tempo para focar no seu negócio!",
@@ -73,7 +73,7 @@ export const translations = {
     per_month: "/mês",
     billed_annually: "cobrado anualmente",
     start_free_trial: "Começar Teste Grátis",
-    free_trial_note: "✨ 15 dias grátis • Sem cartão",
+    free_trial_note: "✨ 7 dias grátis • Sem cartão",
     up_to: "Até",
 
     // Plans
@@ -145,7 +145,7 @@ export const translations = {
     faq_title: "Perguntas Frequentes",
     faq_trial_question: "Como funciona o teste grátis?",
     faq_trial_answer:
-      "Você tem 15 dias para testar todas as funcionalidades gratuitamente. Não precisamos do seu cartão de crédito para começar.",
+      "Você tem 7 dias para testar todas as funcionalidades gratuitamente. Não precisamos do seu cartão de crédito para começar.",
     faq_cancel_question: "Posso cancelar a qualquer momento?",
     faq_cancel_answer:
       "Sim! Você pode cancelar sua assinatura a qualquer momento. Para planos anuais, o serviço permanece ativo até o fim do período contratado.",
@@ -166,7 +166,7 @@ export const translations = {
     login_button: "Entrar",
 
     signup_title: "Começar Teste Grátis",
-    signup_subtitle: "15 dias grátis • Sem cartão de crédito",
+    signup_subtitle: "7 dias grátis • Sem cartão de crédito",
     name: "Nome completo",
     business: "Nome do estabelecimento",
     signup_button: "Começar Teste Grátis",
@@ -347,9 +347,9 @@ export const translations = {
       hero_title: "Tudo que seu negócio precisa.",
       hero_title_highlight: "Em uma só plataforma.",
       hero_description: "Agendamento, financeiro, CRM, comissões, fidelização, estoque e atendimento por IA integrado com WhatsApp — gerencie toda a operação do seu negócio em um só lugar.",
-      hero_cta_primary: "Testar Grátis por 14 dias",
+      hero_cta_primary: "Testar Grátis por 7 dias",
       hero_cta_secondary: "Ver Funcionalidades",
-      hero_note: "Teste grátis por 14 dias. Configuração em 5 minutos.",
+      hero_note: "Teste grátis por 7 dias. Configuração em 5 minutos.",
       hero_month: "Fevereiro 2026",
       hero_view_day: "Dia",
       hero_view_week: "Semana",
@@ -465,7 +465,7 @@ export const translations = {
       partners_label: "Parceiros e Infraestrutura",
       pricing_badge: "Preços transparentes",
       pricing_title: "Escolha o plano ideal para seu negócio",
-      pricing_subtitle: "Todos os planos incluem teste grátis de 14 dias. Só cobra após o período de teste.",
+      pricing_subtitle: "Todos os planos incluem teste grátis de 7 dias. Só cobra após o período de teste.",
       pricing_monthly: "Mensal",
       pricing_annual: "Anual",
       pricing_save: "Economize 20%",
@@ -480,9 +480,9 @@ export const translations = {
       pricing_footnote: "Preços em BRL. Todos os planos incluem suporte e atualizações. Sem taxa de setup.",
       faq_title: "Perguntas Frequentes",
       faq_q1: "Como funciona o teste grátis?",
-      faq_a1: "Você tem 14 dias para testar todas as funcionalidades gratuitamente. Basta informar um cartão de crédito no cadastro — você só será cobrado após o período de teste. Cancele a qualquer momento antes e não pague nada.",
+      faq_a1: "Você tem 7 dias para testar todas as funcionalidades gratuitamente. Basta informar um cartão de crédito no cadastro — você só será cobrado após o período de teste. Cancele a qualquer momento antes e não pague nada.",
       faq_q2: "Vou ser cobrado durante o teste?",
-      faq_a2: "Não. O cartão é cadastrado apenas para garantir a continuidade do serviço após os 14 dias. Se cancelar antes do fim do teste, nenhuma cobrança será realizada.",
+      faq_a2: "Não. O cartão é cadastrado apenas para garantir a continuidade do serviço após os 7 dias. Se cancelar antes do fim do teste, nenhuma cobrança será realizada.",
       faq_q3: "Posso cancelar a qualquer momento?",
       faq_a3: "Sim. Você pode cancelar sua assinatura a qualquer momento sem multa. Para planos anuais, o serviço permanece ativo até o fim do período contratado.",
       faq_q4: "Funciona no celular?",
@@ -497,9 +497,9 @@ export const translations = {
       faq_a8: "Todos os planos incluem suporte por email. Planos Essencial e acima contam com suporte prioritário, e planos Pro e Enterprise têm suporte por telefone e gerente dedicado.",
       cta_title: "Comece a transformar seu negócio hoje",
       cta_subtitle: "Junte-se a negócios que já simplificaram sua gestão com Kalender.",
-      cta_primary: "Testar Grátis por 14 dias",
+      cta_primary: "Testar Grátis por 7 dias",
       cta_secondary: "Já tem conta? Entrar",
-      cta_note: "Teste grátis por 14 dias. Configuração em 5 minutos.",
+      cta_note: "Teste grátis por 7 dias. Configuração em 5 minutos.",
       footer_description: "A plataforma completa de gestão e agendamento inteligente para negócios de serviços.",
       footer_product: "Produto",
       footer_company: "Empresa",
@@ -537,7 +537,7 @@ export const translations = {
     hero_uptime_description: "guaranteed uptime",
     hero_start_free_trial: "Start Free Trial",
     hero_view_pricing: "View Pricing",
-    hero_free_trial_note: "✨ 15 days free • No credit card required",
+    hero_free_trial_note: "✨ 7 days free • No credit card required",
 
     // Features
     features_title: "Powerful Features",
@@ -572,7 +572,7 @@ export const translations = {
     // Pricing
     pricing_title: "Transparent Pricing",
     pricing_title_highlight: "No Surprises",
-    pricing_subtitle: "Choose the ideal plan for your business. All include a 15-day free trial.",
+    pricing_subtitle: "Choose the ideal plan for your business. All include a 7-day free trial.",
     pricing_annual_savings: "💰 Guaranteed Annual Savings",
     pricing_annual_description: "Pay annually and save 30% on all plans. More time to focus on your business!",
     pricing_important_note:
@@ -588,7 +588,7 @@ export const translations = {
     per_month: "/month",
     billed_annually: "billed annually",
     start_free_trial: "Start Free Trial",
-    free_trial_note: "✨ 15 days free • No card required",
+    free_trial_note: "✨ 7 days free • No card required",
     up_to: "Up to",
 
     // Plans
@@ -660,7 +660,7 @@ export const translations = {
     // FAQ
     faq_title: "Frequently Asked Questions",
     faq_trial_question: "How does the free trial work?",
-    faq_trial_answer: "You have 15 days to test all features for free. We don't need your credit card to get started.",
+    faq_trial_answer: "You have 7 days to test all features for free. We don't need your credit card to get started.",
     faq_cancel_question: "Can I cancel anytime?",
     faq_cancel_answer:
       "Yes! You can cancel your subscription at any time. For annual plans, the service remains active until the end of the contracted period.",
@@ -681,7 +681,7 @@ export const translations = {
     login_button: "Sign In",
 
     signup_title: "Start Free Trial",
-    signup_subtitle: "15 days free • No credit card required",
+    signup_subtitle: "7 days free • No credit card required",
     name: "Full name",
     business: "Business name",
     signup_button: "Start Free Trial",
@@ -861,9 +861,9 @@ export const translations = {
       hero_title: "Everything your business needs.",
       hero_title_highlight: "In one platform.",
       hero_description: "Scheduling, finance, CRM, commissions, loyalty, inventory and AI-powered support via WhatsApp — manage your entire operation in one place.",
-      hero_cta_primary: "Try Free for 14 Days",
+      hero_cta_primary: "Try Free for 7 Days",
       hero_cta_secondary: "See Features",
-      hero_note: "Free for 14 days. Setup in 5 minutes.",
+      hero_note: "Free for 7 days. Setup in 5 minutes.",
       hero_month: "February 2026",
       hero_view_day: "Day",
       hero_view_week: "Week",
@@ -979,7 +979,7 @@ export const translations = {
       partners_label: "Partners & Infrastructure",
       pricing_badge: "Transparent pricing",
       pricing_title: "Choose the ideal plan for your business",
-      pricing_subtitle: "All plans include a 14-day free trial. Only charged after the trial period.",
+      pricing_subtitle: "All plans include a 7-day free trial. Only charged after the trial period.",
       pricing_monthly: "Monthly",
       pricing_annual: "Annual",
       pricing_save: "Save 20%",
@@ -994,9 +994,9 @@ export const translations = {
       pricing_footnote: "Prices in BRL. All plans include support and updates. No setup fee.",
       faq_title: "Frequently Asked Questions",
       faq_q1: "How does the free trial work?",
-      faq_a1: "You have 14 days to test all features for free. Just provide a credit card at sign-up — you'll only be charged after the trial period. Cancel anytime before and pay nothing.",
+      faq_a1: "You have 7 days to test all features for free. Just provide a credit card at sign-up — you'll only be charged after the trial period. Cancel anytime before and pay nothing.",
       faq_q2: "Will I be charged during the trial?",
-      faq_a2: "No. The card is registered only to ensure service continuity after 14 days. If you cancel before the trial ends, no charge will be made.",
+      faq_a2: "No. The card is registered only to ensure service continuity after 7 days. If you cancel before the trial ends, no charge will be made.",
       faq_q3: "Can I cancel anytime?",
       faq_a3: "Yes. You can cancel your subscription anytime without penalty. For annual plans, the service remains active until the end of the contracted period.",
       faq_q4: "Does it work on mobile?",
@@ -1011,9 +1011,9 @@ export const translations = {
       faq_a8: "All plans include email support. Essential and above include priority support, and Pro and Enterprise plans have phone support and a dedicated manager.",
       cta_title: "Start transforming your business today",
       cta_subtitle: "Join businesses that have already simplified their management with Kalender.",
-      cta_primary: "Try Free for 14 Days",
+      cta_primary: "Try Free for 7 Days",
       cta_secondary: "Already have an account? Sign In",
-      cta_note: "Free for 14 days. Setup in 5 minutes.",
+      cta_note: "Free for 7 days. Setup in 5 minutes.",
       footer_description: "The complete smart scheduling and management platform for service businesses.",
       footer_product: "Product",
       footer_company: "Company",
@@ -1051,7 +1051,7 @@ export const translations = {
     hero_uptime_description: "tiempo de actividad garantizado",
     hero_start_free_trial: "Comenzar Prueba Gratis",
     hero_view_pricing: "Ver Precios",
-    hero_free_trial_note: "✨ 15 días gratis • Sin tarjeta de crédito",
+    hero_free_trial_note: "✨ 7 días gratis • Sin tarjeta de crédito",
 
     // Features
     features_title: "Funciones Poderosas",
@@ -1086,7 +1086,7 @@ export const translations = {
     // Pricing
     pricing_title: "Precios Transparentes",
     pricing_title_highlight: "Sin Sorpresas",
-    pricing_subtitle: "Elige el plan ideal para tu negocio. Todos incluyen prueba gratis de 15 días.",
+    pricing_subtitle: "Elige el plan ideal para tu negocio. Todos incluyen prueba gratis de 7 días.",
     pricing_annual_savings: "💰 Ahorro Anual Garantizado",
     pricing_annual_description:
       "Paga anualmente y ahorra 30% en todos los planes. ¡Más tiempo para enfocarte en tu negocio!",
@@ -1103,7 +1103,7 @@ export const translations = {
     per_month: "/mes",
     billed_annually: "facturado anualmente",
     start_free_trial: "Comenzar Prueba Gratis",
-    free_trial_note: "✨ 15 días gratis • Sin tarjeta",
+    free_trial_note: "✨ 7 días gratis • Sin tarjeta",
     up_to: "Hasta",
 
     // Plans
@@ -1176,7 +1176,7 @@ export const translations = {
     faq_title: "Preguntas Frecuentes",
     faq_trial_question: "¿Cómo funciona la prueba gratis?",
     faq_trial_answer:
-      "Tienes 15 días para probar todas las funciones gratuitamente. No necesitamos tu tarjeta de crédito para comenzar.",
+      "Tienes 7 días para probar todas las funciones gratuitamente. No necesitamos tu tarjeta de crédito para comenzar.",
     faq_cancel_question: "¿Puedo cancelar en cualquier momento?",
     faq_cancel_answer:
       "¡Sí! Puedes cancelar tu suscripción en cualquier momento. Para planes anuales, el servicio permanece activo hasta el final del período contratado.",
@@ -1197,7 +1197,7 @@ export const translations = {
     login_button: "Iniciar Sesión",
 
     signup_title: "Comenzar Prueba Gratis",
-    signup_subtitle: "15 días gratis • Sin tarjeta de crédito",
+    signup_subtitle: "7 días gratis • Sin tarjeta de crédito",
     name: "Nombre completo",
     business: "Nombre del negocio",
     signup_button: "Comenzar Prueba Gratis",
@@ -1377,9 +1377,9 @@ export const translations = {
       hero_title: "Todo lo que tu negocio necesita.",
       hero_title_highlight: "En una sola plataforma.",
       hero_description: "Agendamiento, finanzas, CRM, comisiones, fidelización, inventario y atención con IA integrada con WhatsApp — gestiona toda la operación de tu negocio en un solo lugar.",
-      hero_cta_primary: "Probar Gratis por 14 días",
+      hero_cta_primary: "Probar Gratis por 7 días",
       hero_cta_secondary: "Ver Funcionalidades",
-      hero_note: "Prueba gratis por 14 días. Configuración en 5 minutos.",
+      hero_note: "Prueba gratis por 7 días. Configuración en 5 minutos.",
       hero_month: "Febrero 2026",
       hero_view_day: "Día",
       hero_view_week: "Semana",
@@ -1495,7 +1495,7 @@ export const translations = {
       partners_label: "Socios e Infraestructura",
       pricing_badge: "Precios transparentes",
       pricing_title: "Elige el plan ideal para tu negocio",
-      pricing_subtitle: "Todos los planes incluyen prueba gratis de 14 días. Solo se cobra después del período de prueba.",
+      pricing_subtitle: "Todos los planes incluyen prueba gratis de 7 días. Solo se cobra después del período de prueba.",
       pricing_monthly: "Mensual",
       pricing_annual: "Anual",
       pricing_save: "Ahorra 20%",
@@ -1510,9 +1510,9 @@ export const translations = {
       pricing_footnote: "Precios en BRL. Todos los planes incluyen soporte y actualizaciones. Sin cargo de setup.",
       faq_title: "Preguntas Frecuentes",
       faq_q1: "¿Cómo funciona la prueba gratis?",
-      faq_a1: "Tienes 14 días para probar todas las funcionalidades gratuitamente. Solo debes ingresar una tarjeta de crédito al registrarte — solo se te cobrará después del período de prueba. Cancela en cualquier momento antes y no pagas nada.",
+      faq_a1: "Tienes 7 días para probar todas las funcionalidades gratuitamente. Solo debes ingresar una tarjeta de crédito al registrarte — solo se te cobrará después del período de prueba. Cancela en cualquier momento antes y no pagas nada.",
       faq_q2: "¿Me cobrarán durante la prueba?",
-      faq_a2: "No. La tarjeta se registra solo para garantizar la continuidad del servicio después de los 14 días. Si cancelas antes de que termine la prueba, no se realizará ningún cobro.",
+      faq_a2: "No. La tarjeta se registra solo para garantizar la continuidad del servicio después de los 7 días. Si cancelas antes de que termine la prueba, no se realizará ningún cobro.",
       faq_q3: "¿Puedo cancelar en cualquier momento?",
       faq_a3: "Sí. Puedes cancelar tu suscripción en cualquier momento sin multa. Para planes anuales, el servicio permanece activo hasta el final del período contratado.",
       faq_q4: "¿Funciona en el celular?",
@@ -1527,9 +1527,9 @@ export const translations = {
       faq_a8: "Todos los planes incluyen soporte por email. Los planes Esencial y superiores incluyen soporte prioritario, y los planes Pro y Enterprise tienen soporte telefónico y gerente dedicado.",
       cta_title: "Comienza a transformar tu negocio hoy",
       cta_subtitle: "Únete a negocios que ya simplificaron su gestión con Kalender.",
-      cta_primary: "Probar Gratis por 14 días",
+      cta_primary: "Probar Gratis por 7 días",
       cta_secondary: "¿Ya tienes cuenta? Iniciar Sesión",
-      cta_note: "Prueba gratis por 14 días. Configuración en 5 minutos.",
+      cta_note: "Prueba gratis por 7 días. Configuración en 5 minutos.",
       footer_description: "La plataforma completa de gestión y agendamiento inteligente para negocios de servicios.",
       footer_product: "Producto",
       footer_company: "Empresa",

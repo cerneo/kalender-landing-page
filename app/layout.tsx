@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Kalender - Plataforma Completa de Gestão e Agendamento Inteligente",
-  description: "Plataforma completa para negócios de serviços. Agendamento online, financeiro, CRM, comissões, fidelização, estoque e atendimento por IA no WhatsApp. Ideal para salões, clínicas, barbearias, consultórios, academias e prestadores de serviços. Teste grátis 14 dias.",
+  description: "Plataforma completa para negócios de serviços. Agendamento online, financeiro, CRM, comissões, fidelização, estoque e atendimento por IA no WhatsApp. Ideal para salões, clínicas, barbearias, consultórios, academias e prestadores de serviços. Teste grátis 7 dias.",
   keywords: "sistema agendamento online, gestão negócio serviços, plataforma agendamento inteligente, agenda online profissional, CRM serviços, comissões profissionais, fidelização clientes, WhatsApp agendamento, IA atendimento, sistema salão, sistema clínica, sistema barbearia, sistema consultório",
   authors: [{ name: "Kalender" }],
   creator: "Kalender",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     locale: "pt_BR",
     url: "https://kalender.com.br",
     title: "Kalender - Plataforma Completa de Gestão e Agendamento Inteligente",
-    description: "Plataforma completa para negócios de serviços. Agendamento, financeiro, CRM, comissões, fidelização e IA no WhatsApp. Teste grátis 14 dias.",
+    description: "Plataforma completa para negócios de serviços. Agendamento, financeiro, CRM, comissões, fidelização e IA no WhatsApp. Teste grátis 7 dias.",
     siteName: "Kalender",
     images: [
       {
@@ -105,7 +105,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       price: "0",
       priceCurrency: "BRL",
       priceValidUntil: "2026-12-31",
-      description: "Teste grátis por 14 dias"
+      description: "Teste grátis por 7 dias"
     },
     description: "Plataforma completa para negócios de serviços. Agendamento, financeiro, CRM, comissões, fidelização e atendimento por IA no WhatsApp.",
     featureList: [

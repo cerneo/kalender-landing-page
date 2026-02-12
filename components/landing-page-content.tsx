@@ -378,14 +378,14 @@ export function LandingPageContent({ initialPlans }: LandingPageContentProps) {
       {/* ═══════════════════════════════════════════════════════════════════ */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? "bg-white/95 backdrop-blur-md shadow-sm" : "bg-transparent"
+          scrolled || mobileMenuOpen ? "bg-white/95 backdrop-blur-md shadow-sm" : "bg-transparent"
         }`}
       >
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="flex items-center gap-2 hover:opacity-80 transition-opacity">
               <KalenderLogo width={36} height={36} />
-              <span className={`text-xl font-bold tracking-tight hidden sm:block ${scrolled ? "text-gray-900" : "text-white"}`}>
+              <span className={`text-xl font-bold tracking-tight hidden sm:block ${scrolled || mobileMenuOpen ? "text-gray-900" : "text-white"}`}>
                 Kalender
               </span>
             </button>
@@ -432,7 +432,7 @@ export function LandingPageContent({ initialPlans }: LandingPageContentProps) {
               <Button
                 variant="ghost"
                 size="icon"
-                className={`md:hidden ${scrolled ? "text-gray-700" : "text-white"}`}
+                className={`md:hidden ${scrolled || mobileMenuOpen ? "text-gray-700" : "text-white"}`}
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
                 {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
