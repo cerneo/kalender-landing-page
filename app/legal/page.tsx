@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
 import { KalenderLogo } from "@/components/kalender-logo"
 import { LanguageSwitcher } from "@/components/language-switcher"
@@ -273,7 +273,9 @@ function LegalPageContent() {
 export default function LegalPage() {
   return (
     <TranslationProvider>
-      <LegalPageContent />
+      <Suspense>
+        <LegalPageContent />
+      </Suspense>
     </TranslationProvider>
   )
 }
