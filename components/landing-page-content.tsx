@@ -1067,10 +1067,10 @@ export function LandingPageContent({ initialPlans }: LandingPageContentProps) {
               <h4 className="text-white font-semibold mb-4 text-sm">{t("landing.footer_legal")}</h4>
               <ul className="space-y-2.5">
                 <li>
-                  <a href="/legal" className="text-sm hover:text-white transition-colors">{t("landing.footer_terms")}</a>
+                  <a href="/legal?tab=termos" className="text-sm hover:text-white transition-colors">{t("landing.footer_terms")}</a>
                 </li>
                 <li>
-                  <a href="/legal" className="text-sm hover:text-white transition-colors">{t("landing.footer_privacy")}</a>
+                  <a href="/legal?tab=privacidade" className="text-sm hover:text-white transition-colors">{t("landing.footer_privacy")}</a>
                 </li>
               </ul>
             </div>
