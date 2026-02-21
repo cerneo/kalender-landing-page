@@ -5,18 +5,14 @@ import { useTranslation } from "@/contexts/translation-context"
 import Marquee from "react-fast-marquee"
 
 const logos = [
-  { name: "Google Calendar", logo: "/images/icons/google-calendar.svg" },
+  { name: "Google", logo: "/images/icons/google.svg" },
+  { name: "Microsoft", logo: "/images/icons/microsoft.svg" },
+  { name: "Meta", logo: "/images/icons/facebook-v2.svg" },
   { name: "WhatsApp", logo: "/images/icons/whatsapp.svg" },
   { name: "Instagram", logo: "/images/icons/instagram.svg" },
-  { name: "Stripe", logo: "/images/icons/stripe.svg" },
-  { name: "Microsoft", logo: "/images/icons/microsoft.svg" },
   { name: "Slack", logo: "/images/icons/slack.svg" },
-  { name: "Google", logo: "/images/icons/google.svg" },
-  { name: "Meta", logo: "/images/icons/facebook-v2.svg" },
-  { name: "Zapier", logo: "/images/icons/zapier.svg" },
-  { name: "Notion", logo: "/images/icons/notion-v2.svg" },
-  { name: "Figma", logo: "/images/icons/figma.svg" },
-  { name: "Shopify", logo: "/images/icons/shopify.svg" },
+  { name: "AWS", logo: "/images/icons/aws.svg" },
+  { name: "Magalu", logo: "/images/icons/magalu.svg" },
 ]
 
 function LogoCard({ name, logo }: { name: string; logo: string }) {
