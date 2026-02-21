@@ -20,8 +20,6 @@ const row2 = [
   { name: "Notion", logo: "/images/icons/notion-v2.svg" },
   { name: "Figma", logo: "/images/icons/figma.svg" },
   { name: "Shopify", logo: "/images/icons/shopify.svg" },
-  { name: "Google Calendar", logo: "/images/icons/google-calendar.svg" },
-  { name: "WhatsApp", logo: "/images/icons/whatsapp.svg" },
 ]
 
 function LogoCard({ name, logo }: { name: string; logo: string }) {
