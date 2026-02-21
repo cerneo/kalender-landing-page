@@ -4,7 +4,7 @@ import Image from "next/image"
 import { useTranslation } from "@/contexts/translation-context"
 import Marquee from "react-fast-marquee"
 
-const row1 = [
+const logos = [
   { name: "Google Calendar", logo: "/images/icons/google-calendar.svg" },
   { name: "WhatsApp", logo: "/images/icons/whatsapp.svg" },
   { name: "Instagram", logo: "/images/icons/instagram.svg" },
@@ -12,9 +12,6 @@ const row1 = [
   { name: "Microsoft", logo: "/images/icons/microsoft.svg" },
   { name: "Slack", logo: "/images/icons/slack.svg" },
   { name: "Google", logo: "/images/icons/google.svg" },
-]
-
-const row2 = [
   { name: "Meta", logo: "/images/icons/facebook-v2.svg" },
   { name: "Zapier", logo: "/images/icons/zapier.svg" },
   { name: "Notion", logo: "/images/icons/notion-v2.svg" },
@@ -24,17 +21,17 @@ const row2 = [
 
 function LogoCard({ name, logo }: { name: string; logo: string }) {
   return (
-    <div className="flex flex-col items-center gap-2.5 mx-5 group">
-      <figure className="w-16 h-16 md:w-20 md:h-20 shrink-0 bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 flex items-center justify-center group-hover:scale-110 group-hover:shadow-lg transition-all duration-300 p-3 md:p-4">
+    <div className="flex flex-col items-center gap-2 mx-6 group">
+      <div className="w-14 h-14 shrink-0 bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 flex items-center justify-center group-hover:scale-110 group-hover:shadow-md transition-all duration-300 overflow-hidden">
         <Image
           src={logo}
           alt={name}
-          width={48}
-          height={48}
-          className="w-full h-full object-contain"
+          width={32}
+          height={32}
+          className="w-8 h-8 object-contain"
         />
-      </figure>
-      <span className="text-xs font-medium text-gray-500 dark:text-gray-400 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">
+      </div>
+      <span className="text-[11px] font-medium text-gray-400 dark:text-gray-500 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors whitespace-nowrap">
         {name}
       </span>
     </div>
@@ -45,7 +42,7 @@ export function IntegrationsSection() {
   const { t } = useTranslation()
 
   return (
-    <section className="py-16 bg-gray-50 dark:bg-gray-900 overflow-hidden">
+    <section className="py-14 bg-gray-50 dark:bg-gray-900 overflow-hidden">
       <div className="mx-auto max-w-[1440px] px-4 sm:px-6 text-center">
         <div className="animate-on-scroll">
           <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-3">
@@ -56,31 +53,16 @@ export function IntegrationsSection() {
           </h2>
           <p className="text-gray-500 dark:text-gray-400 mb-10">{t("landing.integrations_subtitle")}</p>
         </div>
-        <div className="animate-on-scroll space-y-6">
+        <div className="animate-on-scroll">
           <Marquee
-            speed={40}
+            speed={35}
             autoFill
             pauseOnHover
             gradient
             gradientColor="rgb(249, 250, 251)"
             gradientWidth={80}
-            className="py-2"
           >
-            {row1.map((item, i) => (
-              <LogoCard key={i} name={item.name} logo={item.logo} />
-            ))}
-          </Marquee>
-          <Marquee
-            speed={30}
-            autoFill
-            pauseOnHover
-            direction="right"
-            gradient
-            gradientColor="rgb(249, 250, 251)"
-            gradientWidth={80}
-            className="py-2"
-          >
-            {row2.map((item, i) => (
+            {logos.map((item, i) => (
               <LogoCard key={i} name={item.name} logo={item.logo} />
             ))}
           </Marquee>
