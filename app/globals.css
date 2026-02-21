@@ -74,44 +74,78 @@
 .animate-on-scroll {
   opacity: 0;
   transform: translateY(24px);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: blur(4px);
 }
 
 .animate-on-scroll.animate-visible {
   opacity: 1;
   transform: translateY(0);
+  filter: blur(0);
 }
 
 .animate-on-scroll-left {
   opacity: 0;
-  transform: translateX(-24px);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateX(-32px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: blur(4px);
 }
 
 .animate-on-scroll-left.animate-visible {
   opacity: 1;
   transform: translateX(0);
+  filter: blur(0);
 }
 
 .animate-on-scroll-right {
   opacity: 0;
-  transform: translateX(24px);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateX(32px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: blur(4px);
 }
 
 .animate-on-scroll-right.animate-visible {
   opacity: 1;
   transform: translateX(0);
+  filter: blur(0);
+}
+
+.animate-on-scroll-scale {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: blur(4px);
+}
+
+.animate-on-scroll-scale.animate-visible {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
 }
 
 /* Stagger children animations */
-.stagger-children > .animate-on-scroll:nth-child(1) { transition-delay: 0ms; }
-.stagger-children > .animate-on-scroll:nth-child(2) { transition-delay: 80ms; }
-.stagger-children > .animate-on-scroll:nth-child(3) { transition-delay: 160ms; }
-.stagger-children > .animate-on-scroll:nth-child(4) { transition-delay: 240ms; }
-.stagger-children > .animate-on-scroll:nth-child(5) { transition-delay: 320ms; }
-.stagger-children > .animate-on-scroll:nth-child(6) { transition-delay: 400ms; }
-.stagger-children > .animate-on-scroll:nth-child(7) { transition-delay: 480ms; }
+.stagger-children > .animate-on-scroll:nth-child(1),
+.stagger-children > .animate-on-scroll-scale:nth-child(1) { transition-delay: 0ms; }
+.stagger-children > .animate-on-scroll:nth-child(2),
+.stagger-children > .animate-on-scroll-scale:nth-child(2) { transition-delay: 100ms; }
+.stagger-children > .animate-on-scroll:nth-child(3),
+.stagger-children > .animate-on-scroll-scale:nth-child(3) { transition-delay: 200ms; }
+.stagger-children > .animate-on-scroll:nth-child(4),
+.stagger-children > .animate-on-scroll-scale:nth-child(4) { transition-delay: 300ms; }
+.stagger-children > .animate-on-scroll:nth-child(5),
+.stagger-children > .animate-on-scroll-scale:nth-child(5) { transition-delay: 400ms; }
+.stagger-children > .animate-on-scroll:nth-child(6),
+.stagger-children > .animate-on-scroll-scale:nth-child(6) { transition-delay: 500ms; }
+.stagger-children > .animate-on-scroll:nth-child(7),
+.stagger-children > .animate-on-scroll-scale:nth-child(7) { transition-delay: 600ms; }
 
 /* ═══════════════════════════════════════════════════════════════════════════ */
 /* Gradient text utility                                                      */
@@ -125,19 +159,31 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════ */
-/* Prose overrides for /legal page                                            */
+/* Prose overrides for legal pages                                            */
 /* ═══════════════════════════════════════════════════════════════════════════ */
 
 .prose h2 {
   @apply text-xl font-bold text-gray-900 mt-8 mb-3;
 }
 
+.dark .prose h2 {
+  @apply text-gray-100;
+}
+
 .prose h3 {
   @apply text-lg font-semibold text-gray-800 mt-6 mb-2;
 }
 
+.dark .prose h3 {
+  @apply text-gray-200;
+}
+
 .prose p {
   @apply text-gray-600 leading-relaxed mb-4;
+}
+
+.dark .prose p {
+  @apply text-gray-400;
 }
 
 .prose ul {
@@ -146,6 +192,10 @@
 
 .prose li {
   @apply text-gray-600 leading-relaxed;
+}
+
+.dark .prose li {
+  @apply text-gray-400;
 }
 
 .prose a {
