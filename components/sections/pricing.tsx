@@ -102,15 +102,15 @@ export function PricingSection({ plans }: PricingSectionProps) {
               return (
                 <div
                   key={plan.id}
-                  className={`animate-on-scroll-scale relative rounded-2xl transition-all hover:shadow-xl ${
+                  className={`animate-on-scroll-scale relative rounded-2xl transition-all duration-300 ${
                     isRecommended
-                      ? "border-2 border-primary shadow-lg shadow-primary/10 scale-[1.02] bg-white dark:bg-gray-900"
-                      : "border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 hover:-translate-y-1"
+                      ? "border-2 border-primary shadow-lg shadow-primary/10 scale-[1.02] bg-white dark:bg-gray-900 animate-border-glow hover:shadow-xl hover:shadow-primary/20"
+                      : "border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 hover:-translate-y-2 hover:shadow-xl"
                   }`}
                 >
                   {isRecommended && (
                     <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
-                      <Badge className="bg-primary text-white font-bold px-4 py-1 shadow-md rounded-full">
+                      <Badge className="bg-primary text-white font-bold px-4 py-1 shadow-md rounded-full animate-pulse-glow">
                         {t("landing.pricing_popular")}
                       </Badge>
                     </div>

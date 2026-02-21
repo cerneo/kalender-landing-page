@@ -150,7 +150,7 @@ export function Navbar() {
                 <button
                   key={item.id}
                   onClick={() => scrollTo(item.id)}
-                  className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                  className={`nav-link-underline relative px-4 py-2 rounded-full text-sm font-medium transition-all ${
                     activeSection === item.id
                       ? "text-primary bg-primary/10"
                       : scrolled
@@ -179,11 +179,11 @@ export function Navbar() {
                 {t("landing.nav_login")}
               </Button>
               <Button
-                className="hidden md:inline-flex bg-primary hover:bg-primary/90 text-white font-semibold text-sm rounded-full px-5"
+                className="group-arrow hidden md:inline-flex bg-primary hover:bg-primary/90 text-white font-semibold text-sm rounded-full px-5"
                 onClick={() => (window.location.href = ONBOARDING_URL)}
               >
                 {t("landing.nav_cta")}
-                <ArrowRight className="ml-1.5 h-4 w-4" />
+                <ArrowRight className="ml-1.5 h-4 w-4 arrow-icon" />
               </Button>
               <Button
                 variant="ghost"

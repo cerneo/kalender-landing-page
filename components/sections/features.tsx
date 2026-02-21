@@ -102,7 +102,7 @@ export function FeaturesSection() {
           {MODULE_CATEGORIES.map((cat, ci) => (
             <div
               key={ci}
-              className="animate-on-scroll rounded-2xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 p-5 hover:shadow-lg hover:border-gray-200 dark:hover:border-gray-700 transition-all group hover:-translate-y-1"
+              className="animate-on-scroll rounded-2xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 p-5 hover:shadow-xl hover:border-primary/30 dark:hover:border-primary/30 transition-all duration-300 group hover:-translate-y-2 relative overflow-hidden"
             >
               <div className="mb-4">
                 <span
@@ -114,7 +114,7 @@ export function FeaturesSection() {
               <div className="space-y-3.5">
                 {cat.modules.map((mod, mi) => (
                   <div key={mi} className="flex items-start gap-3">
-                    <div className={`${cat.iconBg} p-1.5 rounded-lg mt-0.5 transition-transform group-hover:scale-110`}>
+                    <div className={`${cat.iconBg} p-1.5 rounded-lg mt-0.5 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3`}>
                       <mod.icon className="h-4 w-4 text-gray-600 dark:text-gray-400" />
                     </div>
                     <div>

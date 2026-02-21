@@ -12,9 +12,10 @@ export function CTASection() {
 
   return (
     <section className="py-20 bg-gradient-to-br from-gray-900 via-gray-950 to-gray-900 relative overflow-hidden">
-      {/* Background decorations */}
-      <div className="absolute top-0 left-1/4 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl" />
+      {/* Animated floating blobs */}
+      <div className="absolute top-0 left-1/4 w-80 h-80 bg-primary/8 rounded-full blur-3xl animate-float" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-500/8 rounded-full blur-3xl animate-float-delayed" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-primary/5 to-cyan-500/5 rounded-full blur-3xl animate-float" />
 
       <div className="mx-auto max-w-[1440px] px-4 sm:px-6 text-center relative z-10">
         <div className="max-w-3xl mx-auto animate-on-scroll">
@@ -27,11 +28,11 @@ export function CTASection() {
           <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6">
             <Button
               size="lg"
-              className="bg-primary hover:bg-primary/90 text-white font-bold h-14 px-8 text-base rounded-full shadow-lg shadow-primary/25 hover:scale-[1.02] transition-all"
+              className="group-arrow bg-primary hover:bg-primary/90 text-white font-bold h-14 px-8 text-base rounded-full shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.02] transition-all"
               onClick={() => (window.location.href = ONBOARDING_URL)}
             >
               {t("landing.cta_primary")}
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <ArrowRight className="ml-2 h-5 w-5 arrow-icon" />
             </Button>
             <Button
               size="lg"

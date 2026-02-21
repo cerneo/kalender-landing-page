@@ -22,17 +22,18 @@ export function HowItWorksSection() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 stagger-children relative">
-            {/* Connecting line (desktop) */}
-            <div className="hidden md:block absolute top-[52px] left-[16.5%] right-[16.5%] h-0.5 bg-gradient-to-r from-primary/20 via-primary/40 to-primary/20" />
+          <div className="grid md:grid-cols-3 gap-8 stagger-children-slow relative">
+            {/* Connecting line (desktop) — animated fill */}
+            <div className="hidden md:block absolute top-[52px] left-[16.5%] right-[16.5%] h-0.5 bg-gray-200 dark:bg-gray-700" />
+            <div className="hidden md:block absolute top-[52px] left-[16.5%] right-[16.5%] h-0.5 bg-gradient-to-r from-primary via-primary/80 to-primary animate-line-fill" />
 
             {steps.map((item, i) => (
               <div key={i} className="animate-on-scroll text-center relative">
                 <div className="relative mx-auto mb-6">
-                  <div className="bg-gradient-to-br from-primary to-blue-600 w-[68px] h-[68px] rounded-2xl flex items-center justify-center mx-auto shadow-lg shadow-primary/20 group hover:scale-105 transition-transform">
+                  <div className="bg-gradient-to-br from-primary to-blue-600 w-[68px] h-[68px] rounded-2xl flex items-center justify-center mx-auto shadow-lg shadow-primary/20 group hover:scale-105 transition-transform animate-pulse-glow">
                     <item.icon className="h-7 w-7 text-white" />
                   </div>
-                  <div className="absolute -top-2 -right-2 bg-white dark:bg-gray-900 text-primary border-2 border-primary w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold shadow-sm">
+                  <div className="absolute -top-2 -right-2 bg-white dark:bg-gray-900 text-primary border-2 border-primary w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold shadow-sm animate-bounce-subtle">
                     {item.step}
                   </div>
                 </div>

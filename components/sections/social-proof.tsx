@@ -1,7 +1,77 @@
 "use client"
 
+import { useRef, useState, useEffect, useCallback } from "react"
 import { useTranslation } from "@/contexts/translation-context"
 import { TrendingUp, Calendar, Clock, Star } from "lucide-react"
+
+function useCountUp(end: number, duration = 2000) {
+  const [count, setCount] = useState(0)
+  const [hasAnimated, setHasAnimated] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+
+  const animate = useCallback(() => {
+    if (hasAnimated) return
+    setHasAnimated(true)
+    const startTime = performance.now()
+    const step = (currentTime: number) => {
+      const elapsed = currentTime - startTime
+      const progress = Math.min(elapsed / duration, 1)
+      // Decelerate easing: 1 - (1 - t)^3
+      const eased = 1 - Math.pow(1 - progress, 3)
+      setCount(Math.round(eased * end))
+      if (progress < 1) {
+        requestAnimationFrame(step)
+      }
+    }
+    requestAnimationFrame(step)
+  }, [end, duration, hasAnimated])
+
+  useEffect(() => {
+    const node = ref.current
+    if (!node) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          animate()
+          observer.unobserve(node)
+        }
+      },
+      { threshold: 0.3 }
+    )
+    observer.observe(node)
+    return () => observer.disconnect()
+  }, [animate])
+
+  return { count, ref }
+}
+
+function parseStatValue(value: string): { prefix: string; number: number; suffix: string } {
+  const match = value.match(/^([+\-]?)(\d+)(.*?)$/)
+  if (!match) return { prefix: "", number: 0, suffix: value }
+  return { prefix: match[1], number: parseInt(match[2]), suffix: match[3] }
+}
+
+function AnimatedStat({ value, label, icon: Icon, color }: {
+  value: string
+  label: string
+  icon: React.ElementType
+  color: string
+}) {
+  const parsed = parseStatValue(value)
+  const { count, ref } = useCountUp(parsed.number)
+
+  return (
+    <div ref={ref} className="animate-on-scroll text-center group">
+      <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gray-100 dark:bg-gray-800 mb-3 group-hover:scale-110 transition-transform">
+        <Icon className={`h-5 w-5 ${color}`} />
+      </div>
+      <div className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white tabular-nums">
+        {parsed.prefix}{count}{parsed.suffix}
+      </div>
+      <div className="text-sm text-gray-500 dark:text-gray-400 mt-1">{label}</div>
+    </div>
+  )
+}
 
 export function SocialProofSection() {
   const { t } = useTranslation()
@@ -18,13 +88,7 @@ export function SocialProofSection() {
       <div className="mx-auto max-w-[1440px] px-4 sm:px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((stat, i) => (
-            <div key={i} className="animate-on-scroll text-center group">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gray-100 dark:bg-gray-800 mb-3 group-hover:scale-110 transition-transform">
-                <stat.icon className={`h-5 w-5 ${stat.color}`} />
-              </div>
-              <div className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">{stat.value}</div>
-              <div className="text-sm text-gray-500 dark:text-gray-400 mt-1">{stat.label}</div>
-            </div>
+            <AnimatedStat key={i} {...stat} />
           ))}
         </div>
       </div>
