@@ -21,13 +21,13 @@ const LANGUAGES: { code: Locale; label: string; flag: string }[] = [
 const NAV_SECTIONS = ["features", "pricing", "faq"] as const
 
 interface NavbarProps {
-  /** Force the "scrolled" (light bg) appearance — use on pages with white backgrounds */
+  /** Force the "scrolled" (solid bg) appearance — use on pages with white backgrounds */
   solid?: boolean
 }
 
 export function Navbar({ solid = false }: NavbarProps) {
   const { t, language, setLanguage } = useTranslation()
-  const { theme, setTheme, resolvedTheme } = useTheme()
+  const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
   const [scrolled, setScrolled] = useState(solid)
   const [activeSection, setActiveSection] = useState<string>("")
@@ -36,6 +36,7 @@ export function Navbar({ solid = false }: NavbarProps) {
   useEffect(() => setMounted(true), [])
 
   useEffect(() => {
+    if (solid) return
     let ticking = false
     const handleScroll = () => {
       if (ticking) return
@@ -60,7 +61,7 @@ export function Navbar({ solid = false }: NavbarProps) {
     window.addEventListener("scroll", handleScroll, { passive: true })
     handleScroll()
     return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+  }, [solid])
 
   useEffect(() => {
     if (!mobileMenuOpen) return
@@ -93,17 +94,13 @@ export function Navbar({ solid = false }: NavbarProps) {
     else setTheme("light")
   }
 
-  const ThemeToggle = ({ dark }: { dark?: boolean }) => {
+  const ThemeToggle = () => {
     if (!mounted) return <div className="w-8 h-8" />
     const Icon = theme === "dark" ? Moon : theme === "system" ? Monitor : Sun
     return (
       <button
         onClick={cycleTheme}
-        className={`flex items-center justify-center w-8 h-8 rounded-lg transition-colors ${
-          dark
-            ? "text-zinc-300 hover:text-white hover:bg-white/10"
-            : "text-zinc-600 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
-        }`}
+        className="flex items-center justify-center w-8 h-8 rounded-lg text-zinc-600 dark:text-zinc-300 hover:bg-zinc-200/60 dark:hover:bg-zinc-800 transition-colors"
         aria-label="Toggle theme"
         title={theme === "light" ? "Light" : theme === "dark" ? "Dark" : "System"}
       >
@@ -112,16 +109,10 @@ export function Navbar({ solid = false }: NavbarProps) {
     )
   }
 
-  const LanguageSelector = ({ dark }: { dark?: boolean }) => (
+  const LanguageSelector = () => (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <button
-          className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-sm font-medium transition-colors border ${
-            dark
-              ? "border-white/15 text-zinc-300 hover:text-white hover:bg-white/10"
-              : "border-zinc-200 text-zinc-600 hover:bg-zinc-50"
-          }`}
-        >
+        <button className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-sm font-medium transition-colors border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800">
           <Globe className="h-3.5 w-3.5" />
           <span>{currentLang.flag}</span>
           <span className="hidden sm:inline text-xs">{currentLang.code.toUpperCase()}</span>
@@ -161,13 +152,7 @@ export function Navbar({ solid = false }: NavbarProps) {
             className="flex items-center gap-2.5 hover:opacity-80 transition-opacity"
           >
             <KalenderLogo width={32} height={32} />
-            <span
-              className={`text-lg font-extrabold tracking-tight hidden sm:block transition-colors ${
-                scrolled || mobileMenuOpen
-                  ? "text-zinc-900 dark:text-white"
-                  : "text-white"
-              }`}
-            >
+            <span className="text-lg font-extrabold tracking-tight hidden sm:block text-zinc-900 dark:text-white">
               Kalender
             </span>
           </button>
@@ -180,12 +165,8 @@ export function Navbar({ solid = false }: NavbarProps) {
                 onClick={() => scrollTo(item.id)}
                 className={`relative inline-block px-4 py-2 text-sm font-medium transition-colors ${
                   activeSection === item.id
-                    ? scrolled
-                      ? "text-zinc-900 dark:text-white before:content-[''] before:absolute before:left-2 before:right-2 before:bottom-[7px] before:h-1 before:bg-primary/40 before:rounded-sm"
-                      : "text-white before:content-[''] before:absolute before:left-2 before:right-2 before:bottom-[7px] before:h-1 before:bg-primary/60 before:rounded-sm"
-                    : scrolled
-                    ? "text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white"
-                    : "text-zinc-300 hover:text-white"
+                    ? "text-zinc-900 dark:text-white before:content-[''] before:absolute before:left-2 before:right-2 before:bottom-[7px] before:h-1 before:bg-primary/40 before:rounded-sm"
+                    : "text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white"
                 }`}
               >
                 {item.label}
@@ -196,16 +177,12 @@ export function Navbar({ solid = false }: NavbarProps) {
           {/* Right Actions */}
           <div className="flex items-center gap-2">
             <div className="hidden md:flex items-center gap-1.5">
-              <ThemeToggle dark={!scrolled && !mobileMenuOpen} />
-              <LanguageSelector dark={!scrolled && !mobileMenuOpen} />
+              <ThemeToggle />
+              <LanguageSelector />
             </div>
             <Button
               variant="ghost"
-              className={`hidden md:inline-flex text-sm font-medium ${
-                scrolled
-                  ? "text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800"
-                  : "text-zinc-300 hover:text-white hover:bg-white/10"
-              }`}
+              className="hidden md:inline-flex text-sm font-medium text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800"
               onClick={() => (window.location.href = LOGIN_URL)}
             >
               {t("landing.nav_login")}
@@ -222,11 +199,7 @@ export function Navbar({ solid = false }: NavbarProps) {
             <Button
               variant="ghost"
               size="icon"
-              className={`md:hidden ${
-                scrolled || mobileMenuOpen
-                  ? "text-zinc-700 dark:text-zinc-300"
-                  : "text-white"
-              }`}
+              className="md:hidden text-zinc-700 dark:text-zinc-300"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}

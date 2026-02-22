@@ -40,7 +40,7 @@ export function PricingSection({ plans }: PricingSectionProps) {
   const [isAnnual, setIsAnnual] = useState(true)
 
   return (
-    <section id="pricing" className="py-20 bg-zinc-50 dark:bg-zinc-900 scroll-mt-20">
+    <section id="pricing" className="py-20 bg-zinc-100 dark:bg-zinc-950 scroll-mt-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 animate-on-scroll">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-zinc-900 dark:text-white tracking-tight mb-4">

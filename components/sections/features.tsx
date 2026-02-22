@@ -43,7 +43,7 @@ export function FeaturesSection() {
   const { t } = useTranslation()
 
   return (
-    <section id="features" className="py-20 bg-white dark:bg-zinc-950 scroll-mt-20">
+    <section id="features" className="py-20 bg-white dark:bg-zinc-900 scroll-mt-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14 animate-on-scroll">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-zinc-900 dark:text-white tracking-tight mb-4">

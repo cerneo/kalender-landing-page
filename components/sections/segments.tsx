@@ -17,7 +17,7 @@ export function SegmentsSection() {
   )
 
   return (
-    <section className="py-20 bg-zinc-50 dark:bg-zinc-900">
+    <section className="py-20 bg-zinc-100 dark:bg-zinc-950">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-14 animate-on-scroll">

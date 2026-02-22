@@ -94,7 +94,7 @@ export function SocialProofSection() {
   const { resolvedTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
   useEffect(() => setMounted(true), [])
-  const marqueeGradientColor = mounted && resolvedTheme === "dark" ? "#09090b" : "#ffffff"
+  const marqueeGradientColor = mounted && resolvedTheme === "dark" ? "#18181b" : "#ffffff"
 
   const stats = [
     { value: t("landing.social_revenue"), label: t("landing.social_revenue_label"), icon: TrendingUp },
@@ -104,7 +104,7 @@ export function SocialProofSection() {
   ]
 
   return (
-    <section className="py-16 bg-white dark:bg-zinc-950">
+    <section className="py-16 bg-white dark:bg-zinc-900">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
