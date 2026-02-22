@@ -1,9 +1,8 @@
 "use client"
 
 import { useEffect } from "react"
-import { KalenderLogo } from "@/components/kalender-logo"
-import { LanguageSwitcher } from "@/components/language-switcher"
 import { TranslationProvider, useTranslation } from "@/contexts/translation-context"
+import { Navbar } from "@/components/layout/navbar"
 import { FooterSection } from "@/components/sections/footer"
 import { ArrowLeft } from "lucide-react"
 
@@ -34,21 +33,11 @@ function PrivacidadeContent() {
   }, [language])
 
   return (
-    <div className="min-h-screen bg-white dark:bg-zinc-950 flex flex-col">
-      {/* Navbar — same style as landing */}
-      <header className="bg-white/80 dark:bg-zinc-950/80 backdrop-blur-lg border-b border-zinc-200/60 dark:border-zinc-800/60 sticky top-0 z-50">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
-          <a href="/" className="flex items-center gap-2.5 hover:opacity-80 transition-opacity">
-            <KalenderLogo width={32} height={32} />
-            <span className="text-lg font-bold tracking-tight text-zinc-900 dark:text-white">Kalender</span>
-          </a>
-          <LanguageSwitcher />
-        </div>
-      </header>
+    <div className="min-h-screen bg-white dark:bg-zinc-950 font-sans antialiased flex flex-col">
+      <Navbar solid />
 
-      {/* Content */}
-      <main className="flex-1">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-16">
+      <main className="flex-1 pt-20">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-12">
           <a href="/" className="inline-flex items-center gap-1.5 text-sm text-zinc-500 hover:text-primary transition-colors mb-8">
             <ArrowLeft className="h-4 w-4" />
             {t("landing.nav_features") ? "Voltar" : "Back"}
@@ -134,7 +123,6 @@ function PrivacidadeContent() {
         </div>
       </main>
 
-      {/* Same footer as landing */}
       <FooterSection />
     </div>
   )

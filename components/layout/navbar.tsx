@@ -19,9 +19,14 @@ const LANGUAGES: { code: Locale; label: string; flag: string }[] = [
 
 const NAV_SECTIONS = ["features", "pricing", "faq"] as const
 
-export function Navbar() {
+interface NavbarProps {
+  /** Force the "scrolled" (light bg) appearance — use on pages with white backgrounds */
+  solid?: boolean
+}
+
+export function Navbar({ solid = false }: NavbarProps) {
   const { t, language, setLanguage } = useTranslation()
-  const [scrolled, setScrolled] = useState(false)
+  const [scrolled, setScrolled] = useState(solid)
   const [activeSection, setActiveSection] = useState<string>("")
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
@@ -61,7 +66,12 @@ export function Navbar() {
 
   const scrollTo = (id: string) => {
     setMobileMenuOpen(false)
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
+    const el = document.getElementById(id)
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" })
+    } else {
+      window.location.href = `/#${id}`
+    }
   }
 
   const navItems = [
