@@ -16,20 +16,25 @@ export function FooterSection() {
   const { t, language, setLanguage } = useTranslation()
 
   const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
+    const el = document.getElementById(id)
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" })
+    } else {
+      window.location.href = `/#${id}`
+    }
   }
 
   const currentLang = LANGUAGES.find((l) => l.code === language) || LANGUAGES[0]
 
   return (
-    <footer className="bg-zinc-950 text-zinc-400 pt-16 pb-8">
+    <footer className="bg-white dark:bg-zinc-950 text-zinc-500 dark:text-zinc-400 pt-16 pb-8 border-t border-zinc-200 dark:border-zinc-800">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-5 mb-12">
           {/* Brand Column */}
           <div className="col-span-2 lg:col-span-1">
             <div className="flex items-center gap-2.5 mb-4">
               <KalenderLogo width={28} height={28} />
-              <span className="text-white font-bold text-lg">Kalender</span>
+              <span className="text-zinc-900 dark:text-white font-bold text-lg">Kalender</span>
             </div>
             <p className="text-sm leading-relaxed mb-5 max-w-xs">
               {t("landing.footer_description")}
@@ -39,7 +44,7 @@ export function FooterSection() {
                 href="https://instagram.com/kalenderapp"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-zinc-500 hover:text-white transition-colors"
+                className="text-zinc-400 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors"
                 aria-label="Instagram"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -50,7 +55,7 @@ export function FooterSection() {
                 href="https://linkedin.com/company/kalender"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-zinc-500 hover:text-white transition-colors"
+                className="text-zinc-400 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors"
                 aria-label="LinkedIn"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -62,7 +67,7 @@ export function FooterSection() {
 
           {/* Product */}
           <div>
-            <h4 className="text-white font-semibold mb-4 text-xs uppercase tracking-wider">{t("landing.footer_product")}</h4>
+            <h4 className="text-zinc-900 dark:text-white font-semibold mb-4 text-xs uppercase tracking-wider">{t("landing.footer_product")}</h4>
             <ul className="space-y-2.5">
               {[
                 { label: t("landing.footer_features"), action: () => scrollTo("features") },
@@ -72,7 +77,7 @@ export function FooterSection() {
                 <li key={i}>
                   <button
                     onClick={item.action}
-                    className="text-sm hover:text-white transition-colors"
+                    className="text-sm hover:text-zinc-900 dark:hover:text-white transition-colors"
                   >
                     {item.label}
                   </button>
@@ -83,10 +88,10 @@ export function FooterSection() {
 
           {/* Company */}
           <div>
-            <h4 className="text-white font-semibold mb-4 text-xs uppercase tracking-wider">{t("landing.footer_company")}</h4>
+            <h4 className="text-zinc-900 dark:text-white font-semibold mb-4 text-xs uppercase tracking-wider">{t("landing.footer_company")}</h4>
             <ul className="space-y-2.5">
               <li>
-                <a href="/contact" className="text-sm hover:text-white transition-colors">
+                <a href="/contact" className="text-sm hover:text-zinc-900 dark:hover:text-white transition-colors">
                   {t("landing.footer_contact")}
                 </a>
               </li>
@@ -95,15 +100,15 @@ export function FooterSection() {
 
           {/* Legal */}
           <div>
-            <h4 className="text-white font-semibold mb-4 text-xs uppercase tracking-wider">{t("landing.footer_legal")}</h4>
+            <h4 className="text-zinc-900 dark:text-white font-semibold mb-4 text-xs uppercase tracking-wider">{t("landing.footer_legal")}</h4>
             <ul className="space-y-2.5">
               <li>
-                <a href="/termos" className="text-sm hover:text-white transition-colors">
+                <a href="/termos" className="text-sm hover:text-zinc-900 dark:hover:text-white transition-colors">
                   {t("landing.footer_terms")}
                 </a>
               </li>
               <li>
-                <a href="/privacidade" className="text-sm hover:text-white transition-colors">
+                <a href="/privacidade" className="text-sm hover:text-zinc-900 dark:hover:text-white transition-colors">
                   {t("landing.footer_privacy")}
                 </a>
               </li>
@@ -112,11 +117,11 @@ export function FooterSection() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-zinc-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-zinc-500">{t("landing.footer_copyright")}</p>
+        <div className="border-t border-zinc-200 dark:border-zinc-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-sm text-zinc-400 dark:text-zinc-500">{t("landing.footer_copyright")}</p>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <button className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-sm font-medium border border-zinc-800 text-zinc-400 hover:text-white hover:bg-zinc-800 transition-colors">
+              <button className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-sm font-medium border border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
                 <Globe className="h-3.5 w-3.5" />
                 <span>{currentLang.flag}</span>
                 <span className="text-xs">{currentLang.code.toUpperCase()}</span>

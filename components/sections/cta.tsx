@@ -10,7 +10,7 @@ export function CTASection() {
   const { t } = useTranslation()
 
   return (
-    <section className="py-20 bg-primary/5 dark:bg-primary/5">
+    <section className="py-20 bg-primary/5 dark:bg-primary/10">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
         <div className="max-w-2xl mx-auto animate-on-scroll">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-zinc-900 dark:text-white tracking-tight mb-4">
