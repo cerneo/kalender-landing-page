@@ -43,10 +43,10 @@ export function PricingSection({ plans }: PricingSectionProps) {
     <section id="pricing" className="py-20 bg-zinc-50 dark:bg-zinc-900 scroll-mt-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 animate-on-scroll">
-          <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-white tracking-tight mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-zinc-900 dark:text-white tracking-tight mb-4">
             {t("landing.pricing_title")}
           </h2>
-          <p className="text-zinc-500 dark:text-zinc-400 text-lg max-w-2xl mx-auto mb-8">
+          <p className="text-zinc-500 dark:text-zinc-400 text-lg lg:text-xl max-w-2xl mx-auto mb-8">
             {t("landing.pricing_subtitle")}
           </p>
 
@@ -114,7 +114,7 @@ export function PricingSection({ plans }: PricingSectionProps) {
                   )}
 
                   <div className="text-center pt-8 pb-2 px-6">
-                    <h3 className="text-xl font-bold text-zinc-900 dark:text-white">{plan.name}</h3>
+                    <h3 className="text-xl font-extrabold text-zinc-900 dark:text-white">{plan.name}</h3>
                     <p className="text-zinc-500 dark:text-zinc-400 text-sm mt-1">{plan.description}</p>
                   </div>
 
@@ -126,7 +126,7 @@ export function PricingSection({ plans }: PricingSectionProps) {
                         </div>
                       ) : (
                         <>
-                          <div className="text-4xl font-bold text-zinc-900 dark:text-white">
+                          <div className="text-4xl font-extrabold text-zinc-900 dark:text-white">
                             {formatPrice(monthlyPrice)}
                             <span className="text-base font-normal text-zinc-500">
                               {t("landing.pricing_per_month")}

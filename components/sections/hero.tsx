@@ -33,12 +33,12 @@ export function HeroSection() {
               <span className="text-primary text-sm font-medium">{t("landing.hero_badge")}</span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-[1.1] tracking-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white mb-6 leading-[1.08] tracking-tight">
               {t("landing.hero_title")}{" "}
               <span className="text-primary">{t("landing.hero_title_highlight")}</span>
             </h1>
 
-            <p className="text-lg text-zinc-400 leading-relaxed mb-10 max-w-lg">
+            <p className="text-lg lg:text-xl text-zinc-400 leading-relaxed mb-10 max-w-lg">
               {t("landing.hero_description")}
             </p>
 

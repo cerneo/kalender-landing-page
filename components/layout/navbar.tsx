@@ -122,7 +122,7 @@ export function Navbar() {
           >
             <KalenderLogo width={32} height={32} />
             <span
-              className={`text-lg font-bold tracking-tight hidden sm:block transition-colors ${
+              className={`text-lg font-extrabold tracking-tight hidden sm:block transition-colors ${
                 scrolled || mobileMenuOpen
                   ? "text-zinc-900 dark:text-white"
                   : "text-white"
