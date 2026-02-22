@@ -23,7 +23,6 @@ export function Navbar() {
   const { t, language, setLanguage } = useTranslation()
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState<string>("")
-  const [scrollProgress, setScrollProgress] = useState(0)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   useEffect(() => {
@@ -32,10 +31,7 @@ export function Navbar() {
       if (ticking) return
       ticking = true
       requestAnimationFrame(() => {
-        const scrollY = window.scrollY
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight
-        setScrolled(scrollY > 20)
-        setScrollProgress(docHeight > 0 ? Math.min(scrollY / docHeight, 1) : 0)
+        setScrolled(window.scrollY > 20)
 
         let current = ""
         for (const id of NAV_SECTIONS) {
@@ -80,16 +76,16 @@ export function Navbar() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <button
-          className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-full text-sm font-medium transition-all border ${
+          className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-sm font-medium transition-colors border ${
             dark
-              ? "border-white/15 text-gray-300 hover:text-white hover:bg-white/10"
-              : "border-gray-200 text-gray-700 hover:bg-gray-50"
+              ? "border-white/15 text-zinc-300 hover:text-white hover:bg-white/10"
+              : "border-zinc-200 text-zinc-600 hover:bg-zinc-50"
           }`}
         >
           <Globe className="h-3.5 w-3.5" />
           <span>{currentLang.flag}</span>
           <span className="hidden sm:inline text-xs">{currentLang.code.toUpperCase()}</span>
-          <ChevronDown className="h-3 w-3 opacity-60" />
+          <ChevronDown className="h-3 w-3 opacity-50" />
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-44">
@@ -110,146 +106,143 @@ export function Navbar() {
   )
 
   return (
-    <>
-      {/* Scroll Progress Bar */}
-      <div className="fixed top-0 left-0 right-0 z-[60] h-0.5">
-        <div
-          className="h-full bg-gradient-to-r from-primary to-cyan-400 transition-[width] duration-150 ease-out"
-          style={{ width: `${scrollProgress * 100}%` }}
-        />
-      </div>
-
-      {/* Header */}
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled || mobileMenuOpen
-            ? "bg-white/95 dark:bg-gray-950/95 backdrop-blur-md shadow-sm"
-            : "bg-transparent"
-        }`}
-      >
-        <div className="mx-auto max-w-[1440px] px-4 sm:px-6 py-3">
-          <div className="flex items-center justify-between">
-            <button
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="flex items-center gap-2.5 hover:opacity-80 transition-opacity"
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled || mobileMenuOpen
+          ? "bg-white/80 dark:bg-zinc-950/80 backdrop-blur-lg border-b border-zinc-200/60 dark:border-zinc-800/60"
+          : "bg-transparent"
+      }`}
+    >
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3">
+        <div className="flex items-center justify-between">
+          {/* Logo */}
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="flex items-center gap-2.5 hover:opacity-80 transition-opacity"
+          >
+            <KalenderLogo width={32} height={32} />
+            <span
+              className={`text-lg font-bold tracking-tight hidden sm:block transition-colors ${
+                scrolled || mobileMenuOpen
+                  ? "text-zinc-900 dark:text-white"
+                  : "text-white"
+              }`}
             >
-              <KalenderLogo width={36} height={36} />
-              <span
-                className={`text-xl font-bold tracking-tight hidden sm:block transition-colors ${
-                  scrolled || mobileMenuOpen
-                    ? "text-gray-900 dark:text-white"
-                    : "text-white"
+              Kalender
+            </span>
+          </button>
+
+          {/* Desktop Nav Links */}
+          <nav className="hidden md:flex items-center gap-1">
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollTo(item.id)}
+                className={`relative px-4 py-2 text-sm font-medium transition-colors ${
+                  activeSection === item.id
+                    ? "text-primary"
+                    : scrolled
+                    ? "text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white"
+                    : "text-zinc-300 hover:text-white"
                 }`}
               >
-                Kalender
-              </span>
-            </button>
+                {item.label}
+                {activeSection === item.id && (
+                  <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-primary rounded-full" />
+                )}
+              </button>
+            ))}
+          </nav>
 
-            <nav className="hidden md:flex items-center gap-1">
+          {/* Right Actions */}
+          <div className="flex items-center gap-2">
+            <div className="hidden md:block">
+              <LanguageSelector dark={!scrolled && !mobileMenuOpen} />
+            </div>
+            <Button
+              variant="ghost"
+              className={`hidden md:inline-flex text-sm font-medium ${
+                scrolled
+                  ? "text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                  : "text-zinc-300 hover:text-white hover:bg-white/10"
+              }`}
+              onClick={() => (window.location.href = LOGIN_URL)}
+            >
+              {t("landing.nav_login")}
+            </Button>
+            <Button
+              className="hidden md:inline-flex bg-primary hover:bg-primary/90 text-white font-semibold text-sm rounded-xl px-5"
+              onClick={() => (window.location.href = ONBOARDING_URL)}
+            >
+              {t("landing.nav_cta")}
+              <ArrowRight className="ml-1.5 h-4 w-4" />
+            </Button>
+
+            {/* Mobile Hamburger */}
+            <Button
+              variant="ghost"
+              size="icon"
+              className={`md:hidden ${
+                scrolled || mobileMenuOpen
+                  ? "text-zinc-700 dark:text-zinc-300"
+                  : "text-white"
+              }`}
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </Button>
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        <div
+          className={`md:hidden overflow-hidden transition-all duration-300 ease-out ${
+            mobileMenuOpen ? "max-h-96 opacity-100 mt-3" : "max-h-0 opacity-0 mt-0"
+          }`}
+        >
+          <div className="pt-4 pb-2 border-t border-zinc-200/50 dark:border-zinc-700/50">
+            <nav className="flex flex-col gap-1">
               {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollTo(item.id)}
-                  className={`nav-link-underline relative px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                  className={`text-left py-2.5 px-3 rounded-lg font-medium text-sm transition-colors ${
                     activeSection === item.id
-                      ? "text-primary bg-primary/10"
-                      : scrolled
-                      ? "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/10"
-                      : "text-gray-200 hover:text-white hover:bg-white/10"
+                      ? "text-primary bg-primary/5"
+                      : "text-zinc-700 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800"
                   }`}
                 >
                   {item.label}
                 </button>
               ))}
-            </nav>
-
-            <div className="flex items-center gap-2">
-              <div className="hidden md:block">
-                <LanguageSelector dark={!scrolled} />
-              </div>
-              <Button
-                variant="ghost"
-                className={`hidden md:inline-flex rounded-full text-sm ${
-                  scrolled
-                    ? "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/10"
-                    : "text-gray-200 hover:text-white hover:bg-white/10"
-                }`}
-                onClick={() => (window.location.href = LOGIN_URL)}
-              >
-                {t("landing.nav_login")}
-              </Button>
-              <Button
-                className="group-arrow hidden md:inline-flex bg-primary hover:bg-primary/90 text-white font-semibold text-sm rounded-full px-5"
-                onClick={() => (window.location.href = ONBOARDING_URL)}
-              >
-                {t("landing.nav_cta")}
-                <ArrowRight className="ml-1.5 h-4 w-4 arrow-icon" />
-              </Button>
-              <Button
-                variant="ghost"
-                size="icon"
-                className={`md:hidden rounded-full ${
-                  scrolled || mobileMenuOpen
-                    ? "text-gray-700 dark:text-gray-300"
-                    : "text-white"
-                }`}
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              >
-                {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-              </Button>
-            </div>
-          </div>
-
-          {/* Mobile Menu */}
-          <div
-            className={`md:hidden overflow-hidden transition-all duration-300 ease-out ${
-              mobileMenuOpen ? "max-h-96 opacity-100 mt-3" : "max-h-0 opacity-0 mt-0"
-            }`}
-          >
-            <div className="pt-4 pb-2 border-t border-gray-200/20 dark:border-gray-700/20">
-              <nav className="flex flex-col gap-1">
-                {navItems.map((item) => (
-                  <button
-                    key={item.id}
-                    onClick={() => scrollTo(item.id)}
-                    className={`text-left py-2.5 px-3 rounded-lg font-medium text-sm transition-colors ${
-                      activeSection === item.id
-                        ? "text-primary bg-primary/5"
-                        : "text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5"
-                    }`}
-                  >
-                    {item.label}
-                  </button>
-                ))}
-                <div className="border-t border-gray-100 dark:border-gray-800 mt-2 pt-2 flex flex-col gap-2">
-                  <div className="px-3 py-2">
-                    <LanguageSelector />
-                  </div>
-                  <Button
-                    variant="outline"
-                    className="justify-start rounded-full"
-                    onClick={() => {
-                      setMobileMenuOpen(false)
-                      window.location.href = LOGIN_URL
-                    }}
-                  >
-                    {t("landing.nav_login")}
-                  </Button>
-                  <Button
-                    className="justify-start bg-primary text-white rounded-full"
-                    onClick={() => {
-                      setMobileMenuOpen(false)
-                      window.location.href = ONBOARDING_URL
-                    }}
-                  >
-                    {t("landing.nav_cta")} <ArrowRight className="ml-1.5 h-4 w-4" />
-                  </Button>
+              <div className="border-t border-zinc-100 dark:border-zinc-800 mt-2 pt-2 flex flex-col gap-2">
+                <div className="px-3 py-2">
+                  <LanguageSelector />
                 </div>
-              </nav>
-            </div>
+                <Button
+                  variant="outline"
+                  className="justify-start"
+                  onClick={() => {
+                    setMobileMenuOpen(false)
+                    window.location.href = LOGIN_URL
+                  }}
+                >
+                  {t("landing.nav_login")}
+                </Button>
+                <Button
+                  className="justify-start bg-primary text-white"
+                  onClick={() => {
+                    setMobileMenuOpen(false)
+                    window.location.href = ONBOARDING_URL
+                  }}
+                >
+                  {t("landing.nav_cta")} <ArrowRight className="ml-1.5 h-4 w-4" />
+                </Button>
+              </div>
+            </nav>
           </div>
         </div>
-      </header>
-    </>
+      </div>
+    </header>
   )
 }

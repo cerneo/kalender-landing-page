@@ -40,30 +40,27 @@ export function PricingSection({ plans }: PricingSectionProps) {
   const [isAnnual, setIsAnnual] = useState(true)
 
   return (
-    <section id="pricing" className="py-20 bg-white dark:bg-gray-950 scroll-mt-20">
-      <div className="mx-auto max-w-[1440px] px-4 sm:px-6">
+    <section id="pricing" className="py-20 bg-zinc-50 dark:bg-zinc-900 scroll-mt-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 animate-on-scroll">
-          <Badge className="bg-primary/10 text-primary border-0 mb-4 px-4 py-1.5 rounded-full">
-            {t("landing.pricing_badge")}
-          </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white tracking-tight mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-white tracking-tight mb-4">
             {t("landing.pricing_title")}
           </h2>
-          <p className="text-gray-500 dark:text-gray-400 text-lg max-w-2xl mx-auto mb-8">
+          <p className="text-zinc-500 dark:text-zinc-400 text-lg max-w-2xl mx-auto mb-8">
             {t("landing.pricing_subtitle")}
           </p>
 
           {/* Annual Toggle */}
           <div className="flex items-center justify-center gap-3">
-            <span className={`text-sm font-medium transition-colors ${!isAnnual ? "text-gray-900 dark:text-white" : "text-gray-400"}`}>
+            <span className={`text-sm font-medium transition-colors ${!isAnnual ? "text-zinc-900 dark:text-white" : "text-zinc-400"}`}>
               {t("landing.pricing_monthly")}
             </span>
             <Switch checked={isAnnual} onCheckedChange={setIsAnnual} className="data-[state=checked]:bg-primary" />
-            <span className={`text-sm font-medium transition-colors ${isAnnual ? "text-gray-900 dark:text-white" : "text-gray-400"}`}>
+            <span className={`text-sm font-medium transition-colors ${isAnnual ? "text-zinc-900 dark:text-white" : "text-zinc-400"}`}>
               {t("landing.pricing_annual")}
             </span>
             {isAnnual && (
-              <Badge className="bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-400 border-0 text-xs rounded-full">
+              <Badge className="bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 border-0 text-xs">
                 {t("landing.pricing_save")}
               </Badge>
             )}
@@ -73,10 +70,10 @@ export function PricingSection({ plans }: PricingSectionProps) {
         {/* Pricing Cards */}
         {plans.length === 0 ? (
           <div className="text-center py-12 animate-on-scroll">
-            <div className="max-w-md mx-auto rounded-2xl border border-gray-200 dark:border-gray-800 p-8">
-              <p className="text-gray-500 dark:text-gray-400 mb-4">{t("landing.pricing_subtitle")}</p>
+            <div className="max-w-md mx-auto rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-8">
+              <p className="text-zinc-500 dark:text-zinc-400 mb-4">{t("landing.pricing_subtitle")}</p>
               <Button
-                className="bg-primary hover:bg-primary/90 text-white rounded-full px-6"
+                className="bg-primary hover:bg-primary/90 text-white rounded-xl px-6"
                 onClick={() => (window.location.href = "/contact")}
               >
                 {t("landing.pricing_cta_enterprise")}
@@ -86,7 +83,7 @@ export function PricingSection({ plans }: PricingSectionProps) {
           </div>
         ) : (
           <div
-            className={`grid gap-6 max-w-6xl mx-auto stagger-children ${
+            className={`grid gap-6 max-w-4xl mx-auto stagger-children ${
               plans.length <= 2
                 ? "md:grid-cols-2 max-w-3xl"
                 : plans.length === 3
@@ -102,41 +99,41 @@ export function PricingSection({ plans }: PricingSectionProps) {
               return (
                 <div
                   key={plan.id}
-                  className={`animate-on-scroll-scale relative rounded-2xl transition-all duration-300 ${
+                  className={`animate-on-scroll-scale relative rounded-2xl bg-white dark:bg-zinc-900 transition-all duration-200 ${
                     isRecommended
-                      ? "border-2 border-primary shadow-lg shadow-primary/10 scale-[1.02] bg-white dark:bg-gray-900 animate-border-glow hover:shadow-xl hover:shadow-primary/20"
-                      : "border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 hover:-translate-y-2 hover:shadow-xl"
+                      ? "border-2 border-primary ring-1 ring-primary/20 shadow-md"
+                      : "border border-zinc-200 dark:border-zinc-800 hover:shadow-md"
                   }`}
                 >
                   {isRecommended && (
                     <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
-                      <Badge className="bg-primary text-white font-bold px-4 py-1 shadow-md rounded-full animate-pulse-glow">
+                      <Badge className="bg-primary text-white font-semibold px-4 py-1 shadow-sm">
                         {t("landing.pricing_popular")}
                       </Badge>
                     </div>
                   )}
 
                   <div className="text-center pt-8 pb-2 px-6">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">{plan.name}</h3>
-                    <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">{plan.description}</p>
+                    <h3 className="text-xl font-bold text-zinc-900 dark:text-white">{plan.name}</h3>
+                    <p className="text-zinc-500 dark:text-zinc-400 text-sm mt-1">{plan.description}</p>
                   </div>
 
                   <div className="px-6 pb-6">
                     <div className="text-center mb-6">
                       {isEnterprise ? (
-                        <div className="text-2xl font-bold text-gray-900 dark:text-white py-2">
+                        <div className="text-2xl font-bold text-zinc-900 dark:text-white py-2">
                           {t("landing.pricing_custom")}
                         </div>
                       ) : (
                         <>
-                          <div className="text-4xl font-bold text-gray-900 dark:text-white">
+                          <div className="text-4xl font-bold text-zinc-900 dark:text-white">
                             {formatPrice(monthlyPrice)}
-                            <span className="text-base font-normal text-gray-500">
+                            <span className="text-base font-normal text-zinc-500">
                               {t("landing.pricing_per_month")}
                             </span>
                           </div>
                           {isAnnual && (
-                            <div className="text-xs text-gray-400 mt-1">
+                            <div className="text-xs text-zinc-400 mt-1">
                               {formatPrice(plan.annualPrice)} {t("landing.pricing_billed_annually")}
                             </div>
                           )}
@@ -155,18 +152,18 @@ export function PricingSection({ plans }: PricingSectionProps) {
                       {plan.featureDescriptions.map((feature, fi) => (
                         <div key={fi} className="flex items-start gap-2.5">
                           <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                          <span className="text-sm text-gray-700 dark:text-gray-300">{feature}</span>
+                          <span className="text-sm text-zinc-700 dark:text-zinc-300">{feature}</span>
                         </div>
                       ))}
                     </div>
 
                     <Button
-                      className={`w-full rounded-full font-semibold transition-all hover:scale-[1.02] ${
+                      className={`w-full rounded-xl font-semibold transition-colors ${
                         isRecommended
-                          ? "bg-primary hover:bg-primary/90 text-white shadow-sm shadow-primary/25"
+                          ? "bg-primary hover:bg-primary/90 text-white"
                           : isEnterprise
-                          ? "bg-gray-900 dark:bg-white hover:bg-gray-800 dark:hover:bg-gray-100 text-white dark:text-gray-900"
-                          : "bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white hover:border-primary hover:text-primary"
+                          ? "bg-zinc-900 dark:bg-white hover:bg-zinc-800 dark:hover:bg-zinc-100 text-white dark:text-zinc-900"
+                          : "bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-white hover:border-primary hover:text-primary"
                       }`}
                       onClick={() =>
                         (window.location.href = isEnterprise ? "/contact" : ONBOARDING_URL)
@@ -181,7 +178,7 @@ export function PricingSection({ plans }: PricingSectionProps) {
           </div>
         )}
 
-        <p className="text-center text-xs text-gray-400 mt-8">{t("landing.pricing_footnote")}</p>
+        <p className="text-center text-xs text-zinc-400 mt-8">{t("landing.pricing_footnote")}</p>
       </div>
     </section>
   )

@@ -16,38 +16,38 @@ export function FAQSection() {
   }))
 
   return (
-    <section id="faq" className="py-20 bg-gray-50 dark:bg-gray-900 scroll-mt-20">
-      <div className="mx-auto max-w-[1440px] px-4 sm:px-6">
+    <section id="faq" className="py-20 bg-white dark:bg-zinc-950 scroll-mt-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12 animate-on-scroll">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white tracking-tight mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-white tracking-tight mb-4">
               {t("landing.faq_title")}
             </h2>
           </div>
 
-          <div className="space-y-3 stagger-children">
+          <div className="space-y-3">
             {faqs.map((faq, i) => {
               const isOpen = openFaq === i
               return (
                 <div key={i} className="animate-on-scroll">
                   <button
                     onClick={() => setOpenFaq(isOpen ? null : i)}
-                    className={`w-full flex items-center justify-between p-5 bg-white dark:bg-gray-800 border transition-all text-left ${
+                    className={`w-full flex items-center justify-between p-5 bg-white dark:bg-zinc-900 border transition-all duration-200 text-left ${
                       isOpen
-                        ? "rounded-t-2xl border-gray-200 dark:border-gray-700 shadow-sm"
-                        : "rounded-2xl border-gray-100 dark:border-gray-800 hover:border-gray-200 dark:hover:border-gray-700 hover:shadow-sm"
+                        ? "rounded-t-xl border-zinc-200 dark:border-zinc-700"
+                        : "rounded-xl border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700"
                     }`}
                   >
                     <span
                       className={`font-semibold text-sm pr-4 transition-colors ${
-                        isOpen ? "text-primary" : "text-gray-900 dark:text-white"
+                        isOpen ? "text-primary" : "text-zinc-900 dark:text-white"
                       }`}
                     >
                       {faq.q}
                     </span>
                     <ChevronDown
-                      className={`h-5 w-5 flex-shrink-0 transition-all duration-300 ${
-                        isOpen ? "rotate-180 text-primary" : "text-gray-400"
+                      className={`h-5 w-5 flex-shrink-0 transition-transform duration-300 ${
+                        isOpen ? "rotate-180 text-primary" : "text-zinc-400"
                       }`}
                     />
                   </button>
@@ -61,8 +61,8 @@ export function FAQSection() {
                       opacity: isOpen ? 1 : 0,
                     }}
                   >
-                    <div className="px-5 pb-5 pt-2 bg-white dark:bg-gray-800 rounded-b-2xl border border-t-0 border-gray-200 dark:border-gray-700">
-                      <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">{faq.a}</p>
+                    <div className="px-5 pb-5 pt-2 bg-white dark:bg-zinc-900 rounded-b-xl border border-t-0 border-zinc-200 dark:border-zinc-700">
+                      <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed">{faq.a}</p>
                     </div>
                   </div>
                 </div>

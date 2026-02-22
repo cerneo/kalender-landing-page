@@ -11,46 +11,46 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222 47% 11%;
+    --foreground: 240 10% 4%;
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card-foreground: 240 10% 4%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover-foreground: 240 10% 4%;
     --primary: 199 89% 48%;
     --primary-foreground: 0 0% 100%;
     --secondary: 217 91% 60%;
     --secondary-foreground: 0 0% 100%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%;
     --accent: 187 92% 69%;
-    --accent-foreground: 222 47% 11%;
+    --accent-foreground: 240 10% 4%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
     --ring: 199 89% 48%;
     --radius: 0.625rem;
   }
 
   .dark {
-    --background: 222 47% 11%;
-    --foreground: 210 40% 98%;
-    --card: 222 47% 11%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222 47% 11%;
-    --popover-foreground: 210 40% 98%;
+    --background: 240 10% 4%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 4%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 4%;
+    --popover-foreground: 0 0% 98%;
     --primary: 199 89% 48%;
     --primary-foreground: 0 0% 100%;
     --secondary: 217 91% 60%;
     --secondary-foreground: 0 0% 100%;
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 240 4% 16%;
+    --muted-foreground: 240 5% 65%;
     --accent: 187 92% 69%;
-    --accent-foreground: 222 47% 11%;
+    --accent-foreground: 240 10% 4%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
+    --border: 240 4% 16%;
+    --input: 240 4% 16%;
     --ring: 199 89% 48%;
   }
 }
@@ -68,84 +68,46 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════ */
-/* Scroll-triggered animations                                               */
+/* Scroll-triggered animations (simplified — no blur)                        */
 /* ═══════════════════════════════════════════════════════════════════════════ */
 
 .animate-on-scroll {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              filter 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  filter: blur(4px);
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .animate-on-scroll.animate-visible {
   opacity: 1;
   transform: translateY(0);
-  filter: blur(0);
-}
-
-.animate-on-scroll-left {
-  opacity: 0;
-  transform: translateX(-32px);
-  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              filter 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  filter: blur(4px);
-}
-
-.animate-on-scroll-left.animate-visible {
-  opacity: 1;
-  transform: translateX(0);
-  filter: blur(0);
-}
-
-.animate-on-scroll-right {
-  opacity: 0;
-  transform: translateX(32px);
-  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              filter 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  filter: blur(4px);
-}
-
-.animate-on-scroll-right.animate-visible {
-  opacity: 1;
-  transform: translateX(0);
-  filter: blur(0);
 }
 
 .animate-on-scroll-scale {
   opacity: 0;
-  transform: scale(0.95);
-  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              filter 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  filter: blur(4px);
+  transform: scale(0.97);
+  transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .animate-on-scroll-scale.animate-visible {
   opacity: 1;
   transform: scale(1);
-  filter: blur(0);
 }
 
 /* Stagger children animations */
 .stagger-children > .animate-on-scroll:nth-child(1),
 .stagger-children > .animate-on-scroll-scale:nth-child(1) { transition-delay: 0ms; }
 .stagger-children > .animate-on-scroll:nth-child(2),
-.stagger-children > .animate-on-scroll-scale:nth-child(2) { transition-delay: 100ms; }
+.stagger-children > .animate-on-scroll-scale:nth-child(2) { transition-delay: 80ms; }
 .stagger-children > .animate-on-scroll:nth-child(3),
-.stagger-children > .animate-on-scroll-scale:nth-child(3) { transition-delay: 200ms; }
+.stagger-children > .animate-on-scroll-scale:nth-child(3) { transition-delay: 160ms; }
 .stagger-children > .animate-on-scroll:nth-child(4),
-.stagger-children > .animate-on-scroll-scale:nth-child(4) { transition-delay: 300ms; }
+.stagger-children > .animate-on-scroll-scale:nth-child(4) { transition-delay: 240ms; }
 .stagger-children > .animate-on-scroll:nth-child(5),
-.stagger-children > .animate-on-scroll-scale:nth-child(5) { transition-delay: 400ms; }
+.stagger-children > .animate-on-scroll-scale:nth-child(5) { transition-delay: 320ms; }
 .stagger-children > .animate-on-scroll:nth-child(6),
-.stagger-children > .animate-on-scroll-scale:nth-child(6) { transition-delay: 500ms; }
-.stagger-children > .animate-on-scroll:nth-child(7),
-.stagger-children > .animate-on-scroll-scale:nth-child(7) { transition-delay: 600ms; }
+.stagger-children > .animate-on-scroll-scale:nth-child(6) { transition-delay: 400ms; }
 
 /* ═══════════════════════════════════════════════════════════════════════════ */
 /* Gradient text utility                                                      */
@@ -163,27 +125,27 @@
 /* ═══════════════════════════════════════════════════════════════════════════ */
 
 .prose h2 {
-  @apply text-xl font-bold text-gray-900 mt-8 mb-3;
+  @apply text-xl font-bold text-zinc-900 mt-8 mb-3;
 }
 
 .dark .prose h2 {
-  @apply text-gray-100;
+  @apply text-zinc-100;
 }
 
 .prose h3 {
-  @apply text-lg font-semibold text-gray-800 mt-6 mb-2;
+  @apply text-lg font-semibold text-zinc-800 mt-6 mb-2;
 }
 
 .dark .prose h3 {
-  @apply text-gray-200;
+  @apply text-zinc-200;
 }
 
 .prose p {
-  @apply text-gray-600 leading-relaxed mb-4;
+  @apply text-zinc-600 leading-relaxed mb-4;
 }
 
 .dark .prose p {
-  @apply text-gray-400;
+  @apply text-zinc-400;
 }
 
 .prose ul {
@@ -191,11 +153,11 @@
 }
 
 .prose li {
-  @apply text-gray-600 leading-relaxed;
+  @apply text-zinc-600 leading-relaxed;
 }
 
 .dark .prose li {
-  @apply text-gray-400;
+  @apply text-zinc-400;
 }
 
 .prose a {
@@ -203,145 +165,10 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════ */
-/* Keyframe animations                                                        */
+/* Keyframe animations (only what's needed)                                   */
 /* ═══════════════════════════════════════════════════════════════════════════ */
 
 @keyframes marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
-}
-
-@keyframes textGradient {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-}
-
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 8px rgba(14, 165, 233, 0.3); }
-  50% { box-shadow: 0 0 20px rgba(14, 165, 233, 0.6); }
-}
-
-@keyframes slideInFromBottom {
-  from {
-    opacity: 0;
-    transform: translateY(32px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes border-glow {
-  0%, 100% { border-color: hsl(199, 89%, 48%); box-shadow: 0 0 15px rgba(14, 165, 233, 0.15); }
-  50% { border-color: hsl(199, 89%, 58%); box-shadow: 0 0 25px rgba(14, 165, 233, 0.3); }
-}
-
-@keyframes bounce-subtle {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
-}
-
-@keyframes line-fill {
-  from { transform: scaleX(0); }
-  to { transform: scaleX(1); }
-}
-
-/* ═══════════════════════════════════════════════════════════════════════════ */
-/* Animation utility classes                                                  */
-/* ═══════════════════════════════════════════════════════════════════════════ */
-
-.animate-text-gradient {
-  background-size: 200% 200%;
-  animation: textGradient 5s ease infinite;
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.animate-float-delayed {
-  animation: float 6s ease-in-out 2s infinite;
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 3s ease-in-out infinite;
-}
-
-.animate-border-glow {
-  animation: border-glow 3s ease-in-out infinite;
-}
-
-.animate-bounce-subtle {
-  animation: bounce-subtle 2s ease-in-out infinite;
-}
-
-.animate-line-fill {
-  animation: line-fill 1s ease-out forwards;
-  transform-origin: left;
-}
-
-.animate-on-scroll-blur {
-  opacity: 0;
-  filter: blur(16px);
-  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              filter 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.animate-on-scroll-blur.animate-visible {
-  opacity: 1;
-  filter: blur(0);
-}
-
-.hover-lift {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.hover-lift:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-}
-
-/* Stagger with more pronounced delays */
-.stagger-children-slow > .animate-on-scroll:nth-child(1),
-.stagger-children-slow > .animate-on-scroll-scale:nth-child(1) { transition-delay: 0ms; }
-.stagger-children-slow > .animate-on-scroll:nth-child(2),
-.stagger-children-slow > .animate-on-scroll-scale:nth-child(2) { transition-delay: 300ms; }
-.stagger-children-slow > .animate-on-scroll:nth-child(3),
-.stagger-children-slow > .animate-on-scroll-scale:nth-child(3) { transition-delay: 600ms; }
-
-/* Nav link animated underline */
-.nav-link-underline {
-  position: relative;
-}
-
-.nav-link-underline::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: hsl(199, 89%, 48%);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease;
-}
-
-.nav-link-underline:hover::after {
-  transform: scaleX(1);
-}
-
-/* Arrow slide on hover */
-.group-arrow .arrow-icon {
-  transition: transform 0.3s ease;
-}
-
-.group-arrow:hover .arrow-icon {
-  transform: translateX(4px);
 }

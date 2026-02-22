@@ -16,7 +16,6 @@ function useCountUp(end: number, duration = 2000) {
     const step = (currentTime: number) => {
       const elapsed = currentTime - startTime
       const progress = Math.min(elapsed / duration, 1)
-      // Decelerate easing: 1 - (1 - t)^3
       const eased = 1 - Math.pow(1 - progress, 3)
       setCount(Math.round(eased * end))
       if (progress < 1) {
@@ -51,24 +50,23 @@ function parseStatValue(value: string): { prefix: string; number: number; suffix
   return { prefix: match[1], number: parseInt(match[2]), suffix: match[3] }
 }
 
-function AnimatedStat({ value, label, icon: Icon, color }: {
+function AnimatedStat({ value, label, icon: Icon }: {
   value: string
   label: string
   icon: React.ElementType
-  color: string
 }) {
   const parsed = parseStatValue(value)
   const { count, ref } = useCountUp(parsed.number)
 
   return (
-    <div ref={ref} className="animate-on-scroll text-center group">
-      <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gray-100 dark:bg-gray-800 mb-3 group-hover:scale-110 transition-transform">
-        <Icon className={`h-5 w-5 ${color}`} />
+    <div ref={ref} className="text-center">
+      <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-zinc-100 dark:bg-zinc-800 mb-3">
+        <Icon className="h-5 w-5 text-primary" />
       </div>
-      <div className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white tabular-nums">
+      <div className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-white tabular-nums">
         {parsed.prefix}{count}{parsed.suffix}
       </div>
-      <div className="text-sm text-gray-500 dark:text-gray-400 mt-1">{label}</div>
+      <div className="text-sm text-zinc-500 dark:text-zinc-400 mt-1">{label}</div>
     </div>
   )
 }
@@ -77,16 +75,16 @@ export function SocialProofSection() {
   const { t } = useTranslation()
 
   const stats = [
-    { value: t("landing.social_revenue"), label: t("landing.social_revenue_label"), icon: TrendingUp, color: "text-emerald-500" },
-    { value: t("landing.social_noshow"), label: t("landing.social_noshow_label"), icon: Calendar, color: "text-primary" },
-    { value: t("landing.social_time"), label: t("landing.social_time_label"), icon: Clock, color: "text-violet-500" },
-    { value: t("landing.social_satisfaction"), label: t("landing.social_satisfaction_label"), icon: Star, color: "text-amber-500" },
+    { value: t("landing.social_revenue"), label: t("landing.social_revenue_label"), icon: TrendingUp },
+    { value: t("landing.social_noshow"), label: t("landing.social_noshow_label"), icon: Calendar },
+    { value: t("landing.social_time"), label: t("landing.social_time_label"), icon: Clock },
+    { value: t("landing.social_satisfaction"), label: t("landing.social_satisfaction_label"), icon: Star },
   ]
 
   return (
-    <section className="py-14 bg-gradient-to-r from-gray-50 to-white dark:from-gray-900 dark:to-gray-950 border-b border-gray-100 dark:border-gray-800">
-      <div className="mx-auto max-w-[1440px] px-4 sm:px-6">
-        <p className="text-center text-gray-500 dark:text-gray-400 text-sm mb-8">
+    <section className="py-14 bg-white dark:bg-zinc-950 border-b border-zinc-100 dark:border-zinc-800">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <p className="text-center text-zinc-500 dark:text-zinc-400 text-sm mb-8">
           {t("landing.social_subtitle")}
         </p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">

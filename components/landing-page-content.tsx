@@ -6,13 +6,7 @@ import { useTranslation } from "@/contexts/translation-context"
 import { Navbar } from "@/components/layout/navbar"
 import { HeroSection } from "@/components/sections/hero"
 import { SocialProofSection } from "@/components/sections/social-proof"
-import { PainPointsSection } from "@/components/sections/pain-points"
-import { HowItWorksSection } from "@/components/sections/how-it-works"
-import { WhyChooseUsSection } from "@/components/sections/why-choose-us"
-import { SegmentsShowcaseSection } from "@/components/sections/segments-showcase"
 import { FeaturesSection } from "@/components/sections/features"
-import { AIHighlightSection } from "@/components/sections/ai-highlight"
-import { IntegrationsSection } from "@/components/sections/integrations"
 import { PricingSection } from "@/components/sections/pricing"
 import { FAQSection } from "@/components/sections/faq"
 import { CTASection } from "@/components/sections/cta"
@@ -38,7 +32,7 @@ function useScrollAnimations() {
     )
 
     const elements = document.querySelectorAll(
-      ".animate-on-scroll, .animate-on-scroll-left, .animate-on-scroll-right, .animate-on-scroll-scale"
+      ".animate-on-scroll, .animate-on-scroll-scale"
     )
     elements.forEach((el) => observer.observe(el))
 
@@ -86,17 +80,11 @@ export function LandingPageContent({ initialPlans }: LandingPageContentProps) {
   }, [language])
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950 font-sans antialiased">
+    <div className="min-h-screen bg-white dark:bg-zinc-950 font-sans antialiased">
       <Navbar />
       <HeroSection />
       <SocialProofSection />
-      <PainPointsSection />
-      <HowItWorksSection />
-      <WhyChooseUsSection />
-      <SegmentsShowcaseSection />
       <FeaturesSection />
-      <AIHighlightSection />
-      <IntegrationsSection />
       <PricingSection plans={initialPlans} />
       <FAQSection />
       <CTASection />
@@ -105,7 +93,7 @@ export function LandingPageContent({ initialPlans }: LandingPageContentProps) {
       {/* Back to Top */}
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className={`fixed bottom-6 right-6 z-40 bg-primary text-white p-3 rounded-full shadow-lg shadow-primary/25 transition-all duration-300 hover:bg-primary/90 hover:scale-110 ${
+        className={`fixed bottom-6 right-6 z-40 bg-primary text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:bg-primary/90 ${
           showBackToTop ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
         }`}
         aria-label={t("landing.back_to_top")}
