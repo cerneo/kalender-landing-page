@@ -1,12 +1,13 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useTheme } from "next-themes"
 import { KalenderLogo } from "@/components/kalender-logo"
 import { Button } from "@/components/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { useTranslation } from "@/contexts/translation-context"
 import type { Locale } from "@/lib/translations"
-import { ArrowRight, ChevronDown, Globe, Menu, X } from "lucide-react"
+import { ArrowRight, ChevronDown, Globe, Menu, Monitor, Moon, Sun, X } from "lucide-react"
 
 const LOGIN_URL = "https://app.kalender.com.br/login"
 const ONBOARDING_URL = "https://app.kalender.com.br/onboarding"
@@ -26,9 +27,13 @@ interface NavbarProps {
 
 export function Navbar({ solid = false }: NavbarProps) {
   const { t, language, setLanguage } = useTranslation()
+  const { theme, setTheme, resolvedTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
   const [scrolled, setScrolled] = useState(solid)
   const [activeSection, setActiveSection] = useState<string>("")
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  useEffect(() => setMounted(true), [])
 
   useEffect(() => {
     let ticking = false
@@ -81,6 +86,31 @@ export function Navbar({ solid = false }: NavbarProps) {
   ]
 
   const currentLang = LANGUAGES.find((l) => l.code === language) || LANGUAGES[0]
+
+  const cycleTheme = () => {
+    if (theme === "light") setTheme("dark")
+    else if (theme === "dark") setTheme("system")
+    else setTheme("light")
+  }
+
+  const ThemeToggle = ({ dark }: { dark?: boolean }) => {
+    if (!mounted) return <div className="w-8 h-8" />
+    const Icon = theme === "dark" ? Moon : theme === "system" ? Monitor : Sun
+    return (
+      <button
+        onClick={cycleTheme}
+        className={`flex items-center justify-center w-8 h-8 rounded-lg transition-colors ${
+          dark
+            ? "text-zinc-300 hover:text-white hover:bg-white/10"
+            : "text-zinc-600 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
+        }`}
+        aria-label="Toggle theme"
+        title={theme === "light" ? "Light" : theme === "dark" ? "Dark" : "System"}
+      >
+        <Icon className="h-4 w-4" />
+      </button>
+    )
+  }
 
   const LanguageSelector = ({ dark }: { dark?: boolean }) => (
     <DropdownMenu>
@@ -166,7 +196,8 @@ export function Navbar({ solid = false }: NavbarProps) {
 
           {/* Right Actions */}
           <div className="flex items-center gap-2">
-            <div className="hidden md:block">
+            <div className="hidden md:flex items-center gap-1.5">
+              <ThemeToggle dark={!scrolled && !mobileMenuOpen} />
               <LanguageSelector dark={!scrolled && !mobileMenuOpen} />
             </div>
             <Button
@@ -226,7 +257,8 @@ export function Navbar({ solid = false }: NavbarProps) {
                 </button>
               ))}
               <div className="border-t border-zinc-100 dark:border-zinc-800 mt-2 pt-2 flex flex-col gap-2">
-                <div className="px-3 py-2">
+                <div className="px-3 py-2 flex items-center gap-3">
+                  <ThemeToggle />
                   <LanguageSelector />
                 </div>
                 <Button

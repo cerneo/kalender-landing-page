@@ -2,6 +2,7 @@
 
 import { useRef, useState, useEffect, useCallback } from "react"
 import Image from "next/image"
+import { useTheme } from "next-themes"
 import { useTranslation } from "@/contexts/translation-context"
 import { TrendingUp, Calendar, Clock, Star } from "lucide-react"
 import Marquee from "react-fast-marquee"
@@ -90,6 +91,10 @@ const PARTNER_LOGOS = [
 
 export function SocialProofSection() {
   const { t } = useTranslation()
+  const { resolvedTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
+  const marqueeGradientColor = mounted && resolvedTheme === "dark" ? "#09090b" : "#ffffff"
 
   const stats = [
     { value: t("landing.social_revenue"), label: t("landing.social_revenue_label"), icon: TrendingUp },
@@ -118,7 +123,7 @@ export function SocialProofSection() {
             autoFill
             pauseOnHover
             gradient
-            gradientColor="white"
+            gradientColor={marqueeGradientColor}
             gradientWidth={60}
           >
             {PARTNER_LOGOS.map((item, i) => (

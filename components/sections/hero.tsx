@@ -21,9 +21,10 @@ export function HeroSection() {
   ]
 
   return (
-    <section className="relative min-h-[90vh] flex items-center bg-zinc-950 overflow-hidden">
-      {/* Subtle background radial */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/8 via-transparent to-transparent" />
+    <section className="relative min-h-[90vh] flex items-center bg-gradient-to-br from-zinc-950 via-blue-950 to-zinc-950 overflow-hidden">
+      {/* Subtle background accents */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-secondary/8 via-transparent to-transparent" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-28 pb-16 relative z-10 w-full">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
