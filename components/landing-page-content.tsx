@@ -7,6 +7,7 @@ import { Navbar } from "@/components/layout/navbar"
 import { HeroSection } from "@/components/sections/hero"
 import { SocialProofSection } from "@/components/sections/social-proof"
 import { FeaturesSection } from "@/components/sections/features"
+import { SegmentsSection } from "@/components/sections/segments"
 import { PricingSection } from "@/components/sections/pricing"
 import { FAQSection } from "@/components/sections/faq"
 import { CTASection } from "@/components/sections/cta"
@@ -85,6 +86,7 @@ export function LandingPageContent({ initialPlans }: LandingPageContentProps) {
       <HeroSection />
       <SocialProofSection />
       <FeaturesSection />
+      <SegmentsSection />
       <PricingSection plans={initialPlans} />
       <FAQSection />
       <CTASection />
