@@ -178,18 +178,17 @@ export function Navbar({ solid = false }: NavbarProps) {
               <button
                 key={item.id}
                 onClick={() => scrollTo(item.id)}
-                className={`relative px-4 py-2 text-sm font-medium transition-colors ${
+                className={`relative inline-block px-4 py-2 text-sm font-medium transition-colors ${
                   activeSection === item.id
-                    ? "text-primary"
+                    ? scrolled
+                      ? "text-zinc-900 dark:text-white before:content-[''] before:absolute before:left-2 before:right-2 before:bottom-[7px] before:h-1 before:bg-primary/40 before:rounded-sm"
+                      : "text-white before:content-[''] before:absolute before:left-2 before:right-2 before:bottom-[7px] before:h-1 before:bg-primary/60 before:rounded-sm"
                     : scrolled
                     ? "text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white"
                     : "text-zinc-300 hover:text-white"
                 }`}
               >
                 {item.label}
-                {activeSection === item.id && (
-                  <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-primary rounded-full" />
-                )}
               </button>
             ))}
           </nav>
@@ -247,9 +246,9 @@ export function Navbar({ solid = false }: NavbarProps) {
                 <button
                   key={item.id}
                   onClick={() => scrollTo(item.id)}
-                  className={`text-left py-2.5 px-3 rounded-lg font-medium text-sm transition-colors ${
+                  className={`relative text-left py-2.5 px-3 rounded-lg font-medium text-sm transition-colors ${
                     activeSection === item.id
-                      ? "text-primary bg-primary/5"
+                      ? "text-zinc-900 dark:text-white before:content-[''] before:absolute before:left-3 before:right-3 before:bottom-2 before:h-1 before:bg-primary/40 before:rounded-sm"
                       : "text-zinc-700 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800"
                   }`}
                 >
