@@ -1,7 +1,7 @@
 "use client"
 
 import { useTranslation } from "@/contexts/translation-context"
-import { Shield, Zap, HeartHandshake, BarChart3 } from "lucide-react"
+import { Shield, Zap, HeartHandshake, DollarSign } from "lucide-react"
 
 export function WhyChooseUsSection() {
   const { t } = useTranslation()
@@ -29,11 +29,11 @@ export function WhyChooseUsSection() {
       bg: "bg-violet-100 dark:bg-violet-900/40",
     },
     {
-      icon: BarChart3,
+      icon: DollarSign,
       titleKey: "landing.why_results_title",
       descKey: "landing.why_results_desc",
-      color: "text-primary",
-      bg: "bg-sky-100 dark:bg-sky-900/40",
+      color: "text-emerald-500",
+      bg: "bg-emerald-100 dark:bg-emerald-900/40",
     },
   ]
 

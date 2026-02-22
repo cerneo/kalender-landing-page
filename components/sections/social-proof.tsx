@@ -86,6 +86,9 @@ export function SocialProofSection() {
   return (
     <section className="py-14 bg-gradient-to-r from-gray-50 to-white dark:from-gray-900 dark:to-gray-950 border-b border-gray-100 dark:border-gray-800">
       <div className="mx-auto max-w-[1440px] px-4 sm:px-6">
+        <p className="text-center text-gray-500 dark:text-gray-400 text-sm mb-8">
+          {t("landing.social_subtitle")}
+        </p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((stat, i) => (
             <AnimatedStat key={i} {...stat} />

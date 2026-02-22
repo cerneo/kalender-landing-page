@@ -6,7 +6,7 @@ import {
   Calendar, Clock, Users, DollarSign, BarChart3, TrendingUp,
   Heart, Gift, Star, ClipboardList, Tag, Package,
   Link2, MessageSquare, Smartphone, Bot, Bell, Send,
-  Building2, Lock, Boxes,
+  Building2, Lock, Boxes, Stethoscope, FileHeart, Video,
 } from "lucide-react"
 
 const MODULE_CATEGORIES = [
@@ -78,6 +78,16 @@ const MODULE_CATEGORIES = [
       { icon: Building2, nameKey: "mod_multi_location", descKey: "mod_multi_location_desc" },
       { icon: Lock, nameKey: "mod_permissions", descKey: "mod_permissions_desc" },
       { icon: Boxes, nameKey: "mod_leads", descKey: "mod_leads_desc" },
+    ],
+  },
+  {
+    titleKey: "mod_health",
+    color: "from-rose-500 to-pink-600",
+    iconBg: "bg-rose-100 dark:bg-rose-900/40",
+    modules: [
+      { icon: Stethoscope, nameKey: "mod_ehr", descKey: "mod_ehr_desc" },
+      { icon: FileHeart, nameKey: "mod_insurance", descKey: "mod_insurance_desc" },
+      { icon: Video, nameKey: "mod_telemedicine", descKey: "mod_telemedicine_desc" },
     ],
   },
 ]

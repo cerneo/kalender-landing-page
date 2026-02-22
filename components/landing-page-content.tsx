@@ -9,6 +9,7 @@ import { SocialProofSection } from "@/components/sections/social-proof"
 import { PainPointsSection } from "@/components/sections/pain-points"
 import { HowItWorksSection } from "@/components/sections/how-it-works"
 import { WhyChooseUsSection } from "@/components/sections/why-choose-us"
+import { SegmentsShowcaseSection } from "@/components/sections/segments-showcase"
 import { FeaturesSection } from "@/components/sections/features"
 import { AIHighlightSection } from "@/components/sections/ai-highlight"
 import { IntegrationsSection } from "@/components/sections/integrations"
@@ -92,6 +93,7 @@ export function LandingPageContent({ initialPlans }: LandingPageContentProps) {
       <PainPointsSection />
       <HowItWorksSection />
       <WhyChooseUsSection />
+      <SegmentsShowcaseSection />
       <FeaturesSection />
       <AIHighlightSection />
       <IntegrationsSection />

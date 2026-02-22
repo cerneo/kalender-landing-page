@@ -1,7 +1,7 @@
 "use client"
 
 import { useTranslation } from "@/contexts/translation-context"
-import { Calendar, DollarSign, Users } from "lucide-react"
+import { Calendar, DollarSign, Users, FileX } from "lucide-react"
 
 export function PainPointsSection() {
   const { t } = useTranslation()
@@ -10,6 +10,7 @@ export function PainPointsSection() {
     { title: t("landing.pain1_title"), desc: t("landing.pain1_desc"), icon: Calendar },
     { title: t("landing.pain2_title"), desc: t("landing.pain2_desc"), icon: DollarSign },
     { title: t("landing.pain3_title"), desc: t("landing.pain3_desc"), icon: Users },
+    { title: t("landing.pain4_title"), desc: t("landing.pain4_desc"), icon: FileX },
   ]
 
   return (
@@ -23,7 +24,7 @@ export function PainPointsSection() {
             <p className="text-gray-500 dark:text-gray-400 text-lg">{t("landing.pain_subtitle")}</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-5 stagger-children">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 stagger-children">
             {painPoints.map((pain, i) => (
               <div
                 key={i}
