@@ -94,7 +94,7 @@ export function SocialProofSection() {
   const { resolvedTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
   useEffect(() => setMounted(true), [])
-  const marqueeGradientColor = mounted && resolvedTheme === "dark" ? "#18181b" : "#ffffff"
+  const marqueeGradientColor = mounted && resolvedTheme === "dark" ? "#09090b" : "#ffffff"
 
   const stats = [
     { value: t("landing.social_revenue"), label: t("landing.social_revenue_label"), icon: TrendingUp },
@@ -104,7 +104,7 @@ export function SocialProofSection() {
   ]
 
   return (
-    <section className="py-16 bg-white dark:bg-zinc-900">
+    <section className="py-16 bg-white dark:bg-zinc-950">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
@@ -128,7 +128,7 @@ export function SocialProofSection() {
           >
             {PARTNER_LOGOS.map((item, i) => (
               <div key={i} className="flex flex-col items-center gap-2 mx-8">
-                <div className="w-12 h-12 shrink-0 bg-zinc-50 dark:bg-zinc-800 rounded-xl border border-zinc-100 dark:border-zinc-700 flex items-center justify-center">
+                <div className="w-12 h-12 shrink-0 bg-zinc-50 dark:bg-zinc-800 rounded-xl border border-zinc-100 dark:border-zinc-500/25 flex items-center justify-center">
                   <Image
                     src={item.logo}
                     alt={item.name}

@@ -32,7 +32,7 @@ export function SegmentsSection() {
         {/* Two segment cards */}
         <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-10 stagger-children">
           {/* Health */}
-          <div className="animate-on-scroll rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-8">
+          <div className="animate-on-scroll rounded-2xl border border-zinc-200 dark:border-zinc-500/25 bg-white dark:bg-zinc-950 p-8">
             <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-rose-100 dark:bg-rose-900/30 mb-5">
               <Stethoscope className="h-6 w-6 text-rose-600 dark:text-rose-400" />
             </div>
@@ -50,7 +50,7 @@ export function SegmentsSection() {
           </div>
 
           {/* Beauty */}
-          <div className="animate-on-scroll rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-8">
+          <div className="animate-on-scroll rounded-2xl border border-zinc-200 dark:border-zinc-500/25 bg-white dark:bg-zinc-950 p-8">
             <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-violet-100 dark:bg-violet-900/30 mb-5">
               <Sparkles className="h-6 w-6 text-violet-600 dark:text-violet-400" />
             </div>

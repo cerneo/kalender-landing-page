@@ -70,7 +70,7 @@ export function PricingSection({ plans }: PricingSectionProps) {
         {/* Pricing Cards */}
         {plans.length === 0 ? (
           <div className="text-center py-12 animate-on-scroll">
-            <div className="max-w-md mx-auto rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-8">
+            <div className="max-w-md mx-auto rounded-2xl border border-zinc-200 dark:border-zinc-500/25 bg-white dark:bg-zinc-950 p-8">
               <p className="text-zinc-500 dark:text-zinc-400 mb-4">{t("landing.pricing_subtitle")}</p>
               <Button
                 className="bg-primary hover:bg-primary/90 text-white rounded-xl px-6"
@@ -99,10 +99,10 @@ export function PricingSection({ plans }: PricingSectionProps) {
               return (
                 <div
                   key={plan.id}
-                  className={`animate-on-scroll-scale relative rounded-2xl bg-white dark:bg-zinc-900 transition-all duration-200 ${
+                  className={`animate-on-scroll-scale relative rounded-2xl bg-white dark:bg-zinc-950 transition-all duration-300 ease-in-out ${
                     isRecommended
                       ? "border-2 border-primary ring-1 ring-primary/20 shadow-md"
-                      : "border border-zinc-200 dark:border-zinc-800 hover:shadow-md"
+                      : "border border-zinc-200 dark:border-zinc-500/25 hover:shadow-md"
                   }`}
                 >
                   {isRecommended && (
@@ -163,7 +163,7 @@ export function PricingSection({ plans }: PricingSectionProps) {
                           ? "bg-primary hover:bg-primary/90 text-white"
                           : isEnterprise
                           ? "bg-zinc-900 dark:bg-white hover:bg-zinc-800 dark:hover:bg-zinc-100 text-white dark:text-zinc-900"
-                          : "bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-white hover:border-primary hover:text-primary"
+                          : "bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-500/25 text-zinc-900 dark:text-white hover:border-primary hover:text-primary"
                       }`}
                       onClick={() =>
                         (window.location.href = isEnterprise ? "/contact" : ONBOARDING_URL)

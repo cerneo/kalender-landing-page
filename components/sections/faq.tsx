@@ -16,7 +16,7 @@ export function FAQSection() {
   }))
 
   return (
-    <section id="faq" className="py-20 bg-white dark:bg-zinc-900 scroll-mt-20">
+    <section id="faq" className="py-20 bg-white dark:bg-zinc-950 scroll-mt-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12 animate-on-scroll">
@@ -32,10 +32,10 @@ export function FAQSection() {
                 <div key={i} className="animate-on-scroll">
                   <button
                     onClick={() => setOpenFaq(isOpen ? null : i)}
-                    className={`w-full flex items-center justify-between p-5 bg-white dark:bg-zinc-900 border transition-all duration-200 text-left ${
+                    className={`w-full flex items-center justify-between p-5 bg-white dark:bg-zinc-950 border transition-all duration-300 ease-in-out text-left ${
                       isOpen
-                        ? "rounded-t-xl border-zinc-200 dark:border-zinc-700"
-                        : "rounded-xl border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700"
+                        ? "rounded-t-xl border-zinc-200 dark:border-zinc-500/25"
+                        : "rounded-xl border-zinc-200 dark:border-zinc-500/25 hover:border-zinc-300 dark:hover:border-zinc-700"
                     }`}
                   >
                     <span
@@ -61,7 +61,7 @@ export function FAQSection() {
                       opacity: isOpen ? 1 : 0,
                     }}
                   >
-                    <div className="px-5 pb-5 pt-2 bg-white dark:bg-zinc-900 rounded-b-xl border border-t-0 border-zinc-200 dark:border-zinc-700">
+                    <div className="px-5 pb-5 pt-2 bg-white dark:bg-zinc-950 rounded-b-xl border border-t-0 border-zinc-200 dark:border-zinc-500/25">
                       <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed">{faq.a}</p>
                     </div>
                   </div>

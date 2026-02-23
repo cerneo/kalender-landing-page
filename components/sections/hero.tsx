@@ -55,7 +55,7 @@ export function HeroSection() {
               <Button
                 size="lg"
                 variant="outline"
-                className="h-12 px-7 text-base border-zinc-300 text-zinc-700 hover:bg-zinc-200 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-white rounded-xl transition-colors"
+                className="h-12 px-7 text-base border-primary/50 text-zinc-800 hover:border-primary dark:text-white rounded-xl transition-all duration-300 ease-in-out"
                 onClick={() => scrollTo("features")}
               >
                 {t("landing.hero_cta_secondary")}
@@ -70,7 +70,7 @@ export function HeroSection() {
 
           {/* Right: Calendar Mockup */}
           <div className="relative hidden lg:block">
-            <div className="relative bg-white dark:bg-white/[0.04] rounded-2xl p-6 border border-zinc-200 dark:border-zinc-800 shadow-sm dark:shadow-none">
+            <div className="relative bg-white dark:bg-white/[0.04] rounded-2xl p-6 border border-zinc-200 dark:border-zinc-500/25 shadow-sm dark:shadow-none">
               {/* Calendar Header */}
               <div className="flex items-center justify-between mb-5">
                 <div className="flex items-center gap-2.5">
@@ -91,7 +91,7 @@ export function HeroSection() {
                 {heroAppointments.map((item, i) => (
                   <div
                     key={i}
-                    className="flex items-center gap-3 bg-zinc-50 dark:bg-white/[0.04] rounded-xl p-3.5 border border-zinc-100 dark:border-zinc-800/50"
+                    className="flex items-center gap-3 bg-zinc-50 dark:bg-white/[0.04] rounded-xl p-3.5 border border-zinc-100 dark:border-zinc-500/15"
                   >
                     <div className={`w-1 h-10 ${item.color} rounded-full`} />
                     <div className="text-xs text-zinc-400 dark:text-zinc-500 font-mono w-10">{item.time}</div>
@@ -115,7 +115,7 @@ export function HeroSection() {
               </div>
 
               {/* Bottom Stats */}
-              <div className="grid grid-cols-3 gap-3 mt-5 pt-5 border-t border-zinc-200 dark:border-zinc-800">
+              <div className="grid grid-cols-3 gap-3 mt-5 pt-5 border-t border-zinc-200 dark:border-zinc-500/25">
                 <div className="text-center">
                   <div className="text-zinc-900 dark:text-white font-bold text-lg">12</div>
                   <div className="text-zinc-400 dark:text-zinc-600 text-[10px]">{t("landing.hero_stat_appointments")}</div>

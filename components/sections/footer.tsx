@@ -27,7 +27,7 @@ export function FooterSection() {
   const currentLang = LANGUAGES.find((l) => l.code === language) || LANGUAGES[0]
 
   return (
-    <footer className="bg-white dark:bg-zinc-950 text-zinc-500 dark:text-zinc-400 pt-16 pb-8 border-t border-zinc-200 dark:border-zinc-800">
+    <footer className="bg-white dark:bg-zinc-950 text-zinc-500 dark:text-zinc-400 pt-16 pb-8 border-t border-zinc-200 dark:border-zinc-500/25">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-5 mb-12">
           {/* Brand Column */}
@@ -117,11 +117,11 @@ export function FooterSection() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-zinc-200 dark:border-zinc-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="border-t border-zinc-200 dark:border-zinc-500/25 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-zinc-400 dark:text-zinc-500">{t("landing.footer_copyright")}</p>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <button className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-sm font-medium border border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
+              <button className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-sm font-medium border border-zinc-200 dark:border-zinc-500/25 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
                 <Globe className="h-3.5 w-3.5" />
                 <span>{currentLang.flag}</span>
                 <span className="text-xs">{currentLang.code.toUpperCase()}</span>

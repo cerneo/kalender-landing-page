@@ -43,7 +43,7 @@ export function FeaturesSection() {
   const { t } = useTranslation()
 
   return (
-    <section id="features" className="py-20 bg-white dark:bg-zinc-900 scroll-mt-20">
+    <section id="features" className="py-20 bg-white dark:bg-zinc-950 scroll-mt-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14 animate-on-scroll">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-zinc-900 dark:text-white tracking-tight mb-4">
@@ -58,7 +58,7 @@ export function FeaturesSection() {
           {FEATURES.map((feature, i) => (
             <div
               key={i}
-              className="animate-on-scroll rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 hover:border-primary/40 hover:shadow-sm transition-all duration-200"
+              className="animate-on-scroll rounded-xl border border-zinc-200 dark:border-zinc-500/25 bg-white dark:bg-zinc-950 p-6 hover:border-primary/50 hover:shadow-sm transition-all duration-300 ease-in-out"
             >
               <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 mb-4">
                 <feature.icon className="h-5 w-5 text-primary" />

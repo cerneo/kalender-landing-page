@@ -112,7 +112,7 @@ export function Navbar({ solid = false }: NavbarProps) {
   const LanguageSelector = () => (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <button className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-sm font-medium transition-colors border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800">
+        <button className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-sm font-medium transition-colors border border-zinc-200 dark:border-zinc-500/25 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800">
           <Globe className="h-3.5 w-3.5" />
           <span>{currentLang.flag}</span>
           <span className="hidden sm:inline text-xs">{currentLang.code.toUpperCase()}</span>
@@ -140,7 +140,7 @@ export function Navbar({ solid = false }: NavbarProps) {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled || mobileMenuOpen
-          ? "bg-white/80 dark:bg-zinc-950/80 backdrop-blur-lg border-b border-zinc-200/60 dark:border-zinc-800/60"
+          ? "bg-white/80 dark:bg-zinc-950/80 backdrop-blur-lg border-b border-zinc-200/60 dark:border-zinc-500/25/60"
           : "bg-transparent"
       }`}
     >
@@ -213,7 +213,7 @@ export function Navbar({ solid = false }: NavbarProps) {
             mobileMenuOpen ? "max-h-96 opacity-100 mt-3" : "max-h-0 opacity-0 mt-0"
           }`}
         >
-          <div className="pt-4 pb-2 border-t border-zinc-200/50 dark:border-zinc-700/50">
+          <div className="pt-4 pb-2 border-t border-zinc-200/50 dark:border-zinc-500/25/50">
             <nav className="flex flex-col gap-1">
               {navItems.map((item) => (
                 <button
@@ -228,7 +228,7 @@ export function Navbar({ solid = false }: NavbarProps) {
                   {item.label}
                 </button>
               ))}
-              <div className="border-t border-zinc-100 dark:border-zinc-800 mt-2 pt-2 flex flex-col gap-2">
+              <div className="border-t border-zinc-100 dark:border-zinc-500/25 mt-2 pt-2 flex flex-col gap-2">
                 <div className="px-3 py-2 flex items-center gap-3">
                   <ThemeToggle />
                   <LanguageSelector />
