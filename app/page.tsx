@@ -6,7 +6,7 @@ const API_PLANS_URL = "https://api.kalender.com.br/billing/plans/details"
 async function getPlans(): Promise<PlanDetails[]> {
   try {
     const res = await fetch(API_PLANS_URL, {
-      next: { revalidate: 300 }, // revalidate every 5 minutes
+      cache: 'no-store',
     })
     if (!res.ok) return []
     const data = await res.json()
