@@ -17,8 +17,6 @@ export interface PlanDetails {
   annualPrice: number
   isActive: boolean
   isRecommended: boolean
-  quotas: Record<string, number>
-  features: Record<string, boolean>
   featureDescriptions: string[]
 }
 
