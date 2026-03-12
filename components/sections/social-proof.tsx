@@ -4,7 +4,7 @@ import { useRef, useState, useEffect, useCallback } from "react"
 import Image from "next/image"
 import { useTheme } from "next-themes"
 import { useTranslation } from "@/contexts/translation-context"
-import { TrendingUp, Calendar, Clock, Star } from "lucide-react"
+import { TrendingUp, CalendarX2, Clock, Star } from "lucide-react"
 import Marquee from "react-fast-marquee"
 
 /* ─── Animated Counter ─────────────────────────────────────────────────────── */
@@ -98,7 +98,7 @@ export function SocialProofSection() {
 
   const stats = [
     { value: t("landing.social_revenue"), label: t("landing.social_revenue_label"), icon: TrendingUp },
-    { value: t("landing.social_noshow"), label: t("landing.social_noshow_label"), icon: Calendar },
+    { value: t("landing.social_noshow"), label: t("landing.social_noshow_label"), icon: CalendarX2 },
     { value: t("landing.social_time"), label: t("landing.social_time_label"), icon: Clock },
     { value: t("landing.social_satisfaction"), label: t("landing.social_satisfaction_label"), icon: Star },
   ]
@@ -106,6 +106,11 @@ export function SocialProofSection() {
   return (
     <section className="py-16 bg-white dark:bg-zinc-950">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Subtitle */}
+        <p className="text-center text-sm text-zinc-500 dark:text-zinc-400 mb-10 max-w-lg mx-auto">
+          {t("landing.social_subtitle")}
+        </p>
+
         {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
           {stats.map((stat, i) => (

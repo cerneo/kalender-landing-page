@@ -6,8 +6,11 @@ import { useTranslation } from "@/contexts/translation-context"
 import { Navbar } from "@/components/layout/navbar"
 import { HeroSection } from "@/components/sections/hero"
 import { SocialProofSection } from "@/components/sections/social-proof"
+import { PainPointsSection } from "@/components/sections/pain-points"
+import { PillarsSection } from "@/components/sections/pillars"
 import { FeaturesSection } from "@/components/sections/features"
-import { SegmentsSection } from "@/components/sections/segments"
+import { AISection } from "@/components/sections/ai-section"
+import { DifferentiationSection } from "@/components/sections/differentiation"
 import { PricingSection } from "@/components/sections/pricing"
 import { FAQSection } from "@/components/sections/faq"
 import { CTASection } from "@/components/sections/cta"
@@ -85,8 +88,11 @@ export function LandingPageContent({ initialPlans }: LandingPageContentProps) {
       <Navbar />
       <HeroSection />
       <SocialProofSection />
+      <PainPointsSection />
+      <PillarsSection />
       <FeaturesSection />
-      <SegmentsSection />
+      <AISection />
+      <DifferentiationSection />
       <PricingSection plans={initialPlans} />
       <FAQSection />
       <CTASection />

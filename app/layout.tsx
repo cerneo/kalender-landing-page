@@ -10,9 +10,9 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Kalender - Plataforma Completa de Gestão e Agendamento Inteligente",
-  description: "Plataforma completa para negócios de serviços. Agendamento online, financeiro, CRM, comissões, fidelização, estoque e atendimento por IA no WhatsApp. Ideal para salões, clínicas, barbearias, consultórios, academias e prestadores de serviços. Teste grátis 7 dias.",
-  keywords: "sistema agendamento online, gestão negócio serviços, plataforma agendamento inteligente, agenda online profissional, CRM serviços, comissões profissionais, fidelização clientes, WhatsApp agendamento, IA atendimento, sistema salão, sistema clínica, sistema barbearia, sistema consultório",
+  title: "Kalender - Revenue OS para Negócios com Atendimento",
+  description: "Transforme atendimento em receita recorrente. Reduza no-show, aumente ocupação, automatize cobranças e fidelize clientes com IA. Para clínicas, salões, barbearias, estética e consultórios. Teste grátis 7 dias.",
+  keywords: "revenue os, sistema gestão receita, reduzir no-show, aumentar ocupação agenda, CRM clientes serviços, WhatsApp IA agendamento, plataforma atendimento, sistema clínica, sistema salão, sistema barbearia, automação agendamento, pacotes créditos recorrência",
   authors: [{ name: "Kalender" }],
   creator: "Kalender",
   publisher: "Kalender",
@@ -34,22 +34,22 @@ export const metadata: Metadata = {
     type: "website",
     locale: "pt_BR",
     url: "https://kalender.com.br",
-    title: "Kalender - Plataforma Completa de Gestão e Agendamento Inteligente",
-    description: "Plataforma completa para negócios de serviços. Agendamento, financeiro, CRM, comissões, fidelização e IA no WhatsApp. Teste grátis 7 dias.",
+    title: "Kalender - Revenue OS para Negócios com Atendimento",
+    description: "Transforme atendimento em receita recorrente. Reduza no-show, aumente ocupação e fidelize clientes com IA. Teste grátis 7 dias.",
     siteName: "Kalender",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Kalender - Plataforma de Agendamento com IA",
+        alt: "Kalender - Revenue OS para Negócios com Atendimento",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kalender - Plataforma Completa de Gestão e Agendamento Inteligente",
-    description: "Plataforma completa para negócios de serviços. Agendamento, financeiro, CRM, comissões, fidelização e IA no WhatsApp.",
+    title: "Kalender - Revenue OS para Negócios com Atendimento",
+    description: "Transforme atendimento em receita recorrente. Reduza no-show, aumente ocupação e fidelize clientes com IA.",
     images: ["/og-image.png"],
   },
   robots: {
@@ -108,15 +108,15 @@ export default function RootLayout({ children }: RootLayoutProps) {
       priceValidUntil: "2026-12-31",
       description: "Teste grátis por 7 dias"
     },
-    description: "Plataforma completa para negócios de serviços. Agendamento, financeiro, CRM, comissões, fidelização e atendimento por IA no WhatsApp.",
+    description: "Revenue OS para negócios com atendimento. Reduza no-show, aumente ocupação, automatize cobranças e fidelize clientes com IA.",
     featureList: [
-      "Agendamento com IA via WhatsApp",
-      "Qualificação de leads",
-      "Funil de vendas",
-      "Agenda inteligente",
-      "Relatórios em tempo real",
-      "Integrações com Google Calendar",
-      "Pagamentos integrados"
+      "Redução de no-show com confirmação automática",
+      "Pagamentos e cobranças antecipadas",
+      "CRM e retenção de clientes",
+      "Atendimento por IA no WhatsApp",
+      "Inteligência operacional e relatórios",
+      "Pacotes, créditos e recorrência",
+      "Agenda inteligente multi-profissional"
     ],
     screenshot: "https://kalender.com.br/og-image.png",
     url: "https://kalender.com.br",
