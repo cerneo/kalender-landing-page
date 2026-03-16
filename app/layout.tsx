@@ -5,7 +5,6 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/toaster"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
-import Script from "next/script"
 import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -150,12 +149,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
         </ThemeProvider>
         <Analytics />
         <SpeedInsights />
-        <Script
-          defer
-          src="https://static.cloudflareinsights.com/beacon.min.js"
-          data-cf-beacon='{"token": "6d342d99eda9462bbcf92b1fbadac713"}'
-          strategy="afterInteractive"
-        />
       </body>
     </html>
   )
