@@ -1,9 +1,48 @@
 import { TranslationProvider } from "@/contexts/translation-context"
 import { LandingPageContent, type PlanDetails } from "@/components/landing-page-content"
 
-const API_PLANS_URL = "https://api.kalender.com.br/billing/plans/details"
+const API_PUBLIC_PLANS_URL = "https://api.kalender.com.br/billing/plans/public"
 
-interface ApiPlan {
+// Fallback to legacy endpoint if public endpoint is not yet deployed
+const API_LEGACY_PLANS_URL = "https://api.kalender.com.br/billing/plans/details"
+
+interface PublicPlan {
+  id: number
+  name: string
+  price: number
+  annualPrice: number
+  isRecommended: boolean
+  tagline: string
+  displayOrder: number
+  ctaText: string
+  quotas: { resourceCode: string; limit: number; formattedLabel: string }[]
+  features: { code: string; name: string; enabled: boolean }[]
+}
+
+function transformPublicPlan(api: PublicPlan): PlanDetails {
+  const featureDescriptions: string[] = []
+
+  for (const q of api.quotas || []) {
+    featureDescriptions.push(q.formattedLabel)
+  }
+  for (const f of api.features || []) {
+    if (f.enabled) featureDescriptions.push(f.name)
+  }
+
+  return {
+    id: api.id,
+    name: api.name,
+    description: api.tagline || "",
+    price: api.price,
+    annualPrice: api.annualPrice,
+    isActive: true,
+    isRecommended: api.isRecommended,
+    featureDescriptions,
+  }
+}
+
+// Legacy types for fallback
+interface LegacyPlan {
   id: number
   name: string
   description: string
@@ -39,24 +78,18 @@ const FEATURE_LABELS: Record<number, string> = {
   12: "Gestão de profissionais",
 }
 
-function transformPlan(api: ApiPlan): PlanDetails {
+function transformLegacyPlan(api: LegacyPlan): PlanDetails {
   const featureDescriptions: string[] = []
-
-  // Add quota descriptions
   for (const q of api.quotas) {
     const fn = QUOTA_LABELS[q.resourceCode]
     if (fn) featureDescriptions.push(fn(q.limit))
   }
-
-  // Add feature descriptions
   for (const f of api.features) {
     if (f.enabled && FEATURE_LABELS[f.featureId]) {
       featureDescriptions.push(FEATURE_LABELS[f.featureId])
     }
   }
-
   const monthlyPrice = parseFloat(api.price)
-
   return {
     id: api.id,
     name: api.name,
@@ -70,14 +103,26 @@ function transformPlan(api: ApiPlan): PlanDetails {
 }
 
 async function getPlans(): Promise<PlanDetails[]> {
+  // Try the new public endpoint first
   try {
-    const res = await fetch(API_PLANS_URL, {
-      cache: "no-store",
-    })
+    const res = await fetch(API_PUBLIC_PLANS_URL, { cache: "no-store" })
+    if (res.ok) {
+      const data: PublicPlan[] = await res.json()
+      if (Array.isArray(data) && data.length > 0) {
+        return data.map(transformPublicPlan)
+      }
+    }
+  } catch {
+    // Fall through to legacy
+  }
+
+  // Fallback to legacy endpoint
+  try {
+    const res = await fetch(API_LEGACY_PLANS_URL, { cache: "no-store" })
     if (!res.ok) return []
-    const data: ApiPlan[] = await res.json()
+    const data: LegacyPlan[] = await res.json()
     if (!Array.isArray(data)) return []
-    return data.filter((p) => p.isActive).map(transformPlan)
+    return data.filter((p) => p.isActive).map(transformLegacyPlan)
   } catch {
     return []
   }
